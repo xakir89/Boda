@@ -79,7 +79,19 @@
         <h2>
             Comparte tus fotos
         </h2>
+    <!-- Sección de Galería de Fotos -->
+    <section class="gallery">
+        <h2>Galería de Recuerdos</h2>
+        <p>¡Ayúdanos a capturar cada momento! Sube tus fotos aquí.</p>
+        
+        <!-- Botón para subir fotos -->
+        <input type="file" id="fileInput" accept="image/jpeg, image/png" style="display: none;">
+        <button id="uploadBtn" class="btn">Subir Foto 📷</button>
+        <p id="uploadStatus" style="font-size: 0.9rem; margin-top: 10px; color: #d4af37;"></p>
 
+        <!-- Contenedor donde aparecerán las fotos -->
+        <div id="galleryContainer" class="gallery-grid"></div>
+    </section>
         <p>
             Selecciona una o varias fotografías
             desde tu celular.
@@ -215,6 +227,8 @@
 
 <script src="fotos.js"></script>
 
+<!-- Script para conectar con Supabase -->
+<script type="module" src="app.js"></script>
 </body>
 
 </html>
