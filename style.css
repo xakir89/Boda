@@ -1440,3 +1440,69 @@ footer h2 {
 .gallery-grid img:hover {
     transform: scale(1.05);
 }
+/* =====================================================
+   ESTILOS EXCLUSIVOS PARA FOTOS.HTML
+===================================================== */
+
+/* Campo de nombre */
+.input-name {
+    width: 100%;
+    max-width: 350px;
+    padding: 15px 20px;
+    border: 1px solid var(--green-light);
+    border-radius: 50px;
+    font-family: 'Lato', sans-serif;
+    font-size: 1rem;
+    color: var(--text);
+    text-align: center;
+    background: var(--cream);
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.input-name:focus {
+    border-color: var(--green-dark);
+}
+
+/* Grid Responsivo de la Galería */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 50px auto 0;
+    padding: 0 20px;
+}
+
+/* Tarjeta de foto individual */
+.photo-card-item {
+    background: white;
+    padding: 15px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    transition: transform 0.3s ease;
+}
+
+.photo-card-item:hover {
+    transform: translateY(-5px);
+}
+
+.photo-card-item img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.photo-author {
+    font-size: 1.1rem;
+    color: var(--green-dark);
+    font-weight: 600;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    margin: 0;
+}

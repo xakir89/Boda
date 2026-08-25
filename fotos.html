@@ -1,234 +1,104 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#748b73">
+    <title>Nuestros recuerdos | Anderson & Esmeralda</title>
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <meta name="theme-color"
-          content="#748b73">
-
-    <title>
-        Nuestros recuerdos | Anderson & Esmeralda
-    </title>
-
-    <link rel="preconnect"
-          href="https://fonts.googleapis.com">
-
-    <link rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap"
-          rel="stylesheet">
-
-    <link rel="stylesheet"
-          href="fotos.css">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
 </head>
-
-
 <body>
 
-
-<header class="photo-header">
-
-    <a href="index.html"
-       class="back-button">
-
-        ← Invitación
-
-    </a>
-
-
-    <div class="header-content">
-
-        <p class="eyebrow">
-            ANDERSON & ESMERALDA
-        </p>
-
-        <h1>
-            Nuestros recuerdos
-        </h1>
-
-        <p>
-            Las fotografías que ustedes
-            tomen también serán parte
-            de nuestra historia.
-        </p>
-
-    </div>
-
-</header>
-
-
 <main>
-
-
-<section class="upload-section">
-
-    <div class="upload-card">
-
-        <div class="camera-icon">
-            📸
+    <!-- HERO DE LA GALERÍA -->
+    <section class="hero hero-fotos" style="min-height: 40svh;">
+        <div class="hero-overlay"></div>
+        <div class="hero-content reveal">
+            <p class="eyebrow">NUESTROS RECUERDOS</p>
+            <h1 class="names">Galería</h1>
+            <div class="hero-line"></div>
+            <a href="index.html" class="scroll-button">← Volver a la invitación</a>
         </div>
-
-        <h2>
-            Comparte tus fotos
-        </h2>
-    <!-- Sección de Galería de Fotos -->
-    <section class="gallery">
-        <h2>Galería de Recuerdos</h2>
-        <p>¡Ayúdanos a capturar cada momento! Sube tus fotos aquí.</p>
-        
-        <!-- Botón para subir fotos -->
-        <input type="file" id="fileInput" accept="image/jpeg, image/png" style="display: none;">
-        <button id="uploadBtn" class="btn">Subir Foto 📷</button>
-        <p id="uploadStatus" style="font-size: 0.9rem; margin-top: 10px; color: #d4af37;"></p>
-
-        <!-- Contenedor donde aparecerán las fotos -->
-        <div id="galleryContainer" class="gallery-grid"></div>
     </section>
-        <p>
-            Selecciona una o varias fotografías
-            desde tu celular.
-        </p>
 
-
-        <label for="photoInput"
-               class="upload-button">
-
-            📷 Seleccionar fotografías
-
-        </label>
-
-
-        <input
-            type="file"
-            id="photoInput"
-            accept="image/*"
-            multiple
-            hidden
-        >
-
-
-        <div id="selectedFiles"
-             class="selected-files">
-        </div>
-
-
-        <button id="uploadButton"
-                class="upload-button secondary"
-                disabled>
-
-            ☁️ Subir fotografías
-
-        </button>
-
-
-        <div id="uploadProgress"
-             class="upload-progress">
-
-            <div id="progressBar"
-                 class="progress-bar">
+    <!-- SECCIÓN PARA SUBIR FOTOS -->
+    <section class="upload-section section reveal">
+        <div class="event-card" style="max-width: 650px; margin: auto; text-align: center;">
+            <div class="event-icon">📸</div>
+            <p class="event-type">COMPARTIR</p>
+            <h3>Sube tus fotos</h3>
+            <div class="gold-line"></div>
+            <p>Selecciona una o varias fotografías y dinos quién eres para guardarlas en nuestra historia.</p>
+            
+            <div style="margin-top: 25px;">
+                <input type="text" id="uploaderName" placeholder="Tu nombre o el de tu familia" class="input-name" required>
             </div>
 
+            <div style="margin-top: 20px;">
+                <label for="fileInput" class="main-button">
+                    📷 Seleccionar fotografías
+                </label>
+                <!-- Atributo 'multiple' permite seleccionar varias fotos -->
+                <input type="file" id="fileInput" accept="image/*" multiple hidden>
+            </div>
+
+            <div id="selectedFiles" class="event-type" style="margin-top: 15px;"></div>
+
+            <button id="uploadBtn" class="main-button" style="background: var(--gold); display: none; margin: 15px auto 0;">
+                ☁️ Subir fotografías
+            </button>
+
+            <p id="uploadStatus" style="font-size: 1rem; margin-top: 15px; font-weight: bold;"></p>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DE LA GALERÍA -->
+    <section class="gallery-section section reveal">
+        <div style="text-align: center;">
+            <p class="eyebrow">EL DÍA MÁS FELIZ</p>
+            <h2>Todas las fotos</h2>
+            <div class="gold-line"></div>
+            <p>Las fotografías que compartan aparecerán aquí en tiempo real.</p>
         </div>
 
-
-        <p id="uploadMessage"
-           class="upload-message">
-        </p>
-
-    </div>
-
-</section>
-
-
-<section class="gallery-section">
-
-    <div class="gallery-heading">
-
-        <p class="eyebrow">
-            LOS RECUERDOS DE NUESTRO DÍA
-        </p>
-
-        <h2>
-            Galería
-        </h2>
-
-        <div class="gold-line"></div>
-
-        <p>
-            Todas las fotografías compartidas
-            aparecerán aquí.
-        </p>
-
-    </div>
-
-
-    <div id="gallery"
-         class="gallery">
-
-        <div class="loading">
-            Cargando recuerdos...
+        <div id="galleryContainer" class="gallery-grid">
+            <div class="loading" style="grid-column: 1 / -1; text-align: center; margin-top: 20px;">
+                Cargando recuerdos...
+            </div>
         </div>
-
-    </div>
-
-</section>
-
+    </section>
 </main>
 
-
-<!-- VISOR DE FOTO -->
-
-<div id="lightbox"
-     class="lightbox">
-
-    <button id="closeLightbox"
-            class="close-lightbox">
-
-        ×
-
-    </button>
-
-
-    <img id="lightboxImage"
-         src=""
-         alt="Fotografía">
-
-</div>
-
-
 <footer>
-
-    <div>
-        ❦
-    </div>
-
-    <p>
-        Anderson & Esmeralda
-    </p>
-
-    <small>
-        7 · 12 · 2026
-    </small>
-
+    <div class="footer-flower">❦</div>
+    <h2>Anderson & Esmeralda</h2>
+    <p class="footer-date">7 · 12 · 2026</p>
 </footer>
 
+<!-- Animaciones (Reveal) independientes para esta página -->
+<script>
+    const revealElements = document.querySelectorAll(".reveal");
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+            }
+        });
+    }, { threshold: 0.12 });
 
-<!-- Supabase -->
+    revealElements.forEach(element => {
+        observer.observe(element);
+    });
+</script>
 
+<!-- Scripts de Supabase -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-<script src="fotos.js"></script>
-
-<!-- Script para conectar con Supabase -->
 <script type="module" src="app.js"></script>
-</body>
 
+</body>
 </html>
