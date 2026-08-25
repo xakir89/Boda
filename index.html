@@ -2,66 +2,581 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nuestra Boda - Anderson y Esmeralda</title>
-    <link rel="stylesheet" href="style.css">
-    
-    <!-- Fuentes de Google Fonts: Alex Brush (Cursiva), Playfair Display y Lato -->
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#748b73">
+
+    <meta name="description"
+          content="Invitación de boda de Anderson y Esmeralda">
+
+    <title>Anderson & Esmeralda | Nuestra Boda</title>
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap"
+          rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <header class="hero">
-        <h1 class="names">Anderson & Esmeralda</h1>
-        <p class="subtitle">¡Nos casamos!</p>
-        <p class="date">7 de Diciembre, 2026</p>
-    </header>
+<!-- =====================================================
+     PANTALLA DE BIENVENIDA
+===================================================== -->
 
-    <section class="details">
-        <h2>Detalles del Evento</h2>
-        <div class="cards-container">
-            
-            <!-- Tarjeta Ceremonia -->
-            <div class="card">
-                <h3>La Ceremonia</h3>
-                <p><strong>Hora:</strong> 5:00 PM</p>
-                <p><strong>Lugar:</strong> Parroquia La Sagrada Familia</p>
-                <p>Tuluá, Valle del Cauca</p>
-                <a href="https://maps.google.com/?cid=17780902812501791559" target="_blank" class="map-btn">
-                    📍 Ver ubicación en Google Maps
-                </a>
-            </div>
+<div id="welcomeScreen" class="welcome-screen">
 
-            <!-- Tarjeta Recepción -->
-            <div class="card">
-                <h3>La Recepción</h3>
-                <p><strong>Hora:</strong> 8:00 PM</p>
-                <p><strong>Lugar:</strong> Finca Villa Alana</p>
-                <p>Farfán, Palomestizo, Tuluá, Valle del Cauca</p>
-                <a href="https://maps.google.com/?cid=12772945322594579210" target="_blank" class="map-btn">
-                    📍 Ver ubicación en Google Maps
-                </a>
-            </div>
+    <div class="welcome-decoration welcome-left">
+        🌿
+    </div>
 
-        </div>
-    </section>
+    <div class="welcome-decoration welcome-right">
+        🌿
+    </div>
 
-    <!-- Sección de Confirmación (RSVP) -->
-    <section class="rsvp">
-        <h2>Acompáñanos en nuestro día</h2>
-        <p>Por favor, confirma tu asistencia antes del 15 de Octubre de 2026.</p>
-        
-        <!-- Reemplaza el número "573000000000" por tu número de WhatsApp real con código de país -->
-        <a href="https://wa.me/573000000000?text=¡Hola!%20Quiero%20confirmar%20mi%20asistencia%20a%20la%20boda%20de%20Anderson%20y%20Esmeralda." target="_blank" class="btn">
-            Confirmar Asistencia por WhatsApp
+    <div class="welcome-content">
+
+        <span class="small-title">
+            UNA INVITACIÓN ESPECIAL
+        </span>
+
+        <h1>
+            Anderson
+            <span>&</span>
+            Esmeralda
+        </h1>
+
+        <p>
+            Tenemos una historia que queremos compartir contigo.
+        </p>
+
+        <button id="openInvitation" class="main-button">
+            Abrir invitación
+            <span>♡</span>
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     CONTENIDO PRINCIPAL
+===================================================== -->
+
+<main id="mainContent" class="hidden">
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+    <div class="hero-overlay"></div>
+
+    <div class="floating-petal petal-1">✿</div>
+    <div class="floating-petal petal-2">❀</div>
+    <div class="floating-petal petal-3">✿</div>
+    <div class="floating-petal petal-4">❀</div>
+
+    <div class="hero-content">
+
+        <p class="eyebrow">
+            CON MUCHO AMOR
+        </p>
+
+        <h1 class="names">
+            Anderson
+            <span>&</span>
+            Esmeralda
+        </h1>
+
+        <p class="hero-message">
+            ¡Nos casamos!
+        </p>
+
+        <div class="hero-line"></div>
+
+        <p class="hero-date">
+            7 de diciembre de 2026
+        </p>
+
+        <p class="hero-location">
+            Tuluá · Valle del Cauca
+        </p>
+
+        <a href="#countdown"
+           class="scroll-button">
+            Descubrir nuestra historia
+            ↓
         </a>
-    </section>
 
-    <footer>
-        <p>Con mucho amor, Anderson y Esmeralda.</p>
-    </footer>
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     CONTROL DE MÚSICA
+===================================================== -->
+
+<button id="musicButton"
+        class="music-button"
+        aria-label="Activar música">
+
+    🔇
+
+</button>
+
+<audio id="weddingMusic"
+       loop
+       preload="auto">
+
+    <source src="assets/musica.mp3"
+            type="audio/mpeg">
+
+</audio>
+
+
+<!-- =====================================================
+     INTRODUCCIÓN
+===================================================== -->
+
+<section class="story section reveal">
+
+    <div class="section-decoration">
+        ❦
+    </div>
+
+    <p class="eyebrow">
+        NUESTRA HISTORIA
+    </p>
+
+    <h2>
+        Dos caminos,
+        <br>
+        un mismo destino
+    </h2>
+
+    <div class="gold-line"></div>
+
+    <p class="story-text">
+        Hay momentos que cambian nuestra vida para siempre.
+        Personas que llegan inesperadamente y terminan
+        convirtiéndose en nuestro hogar.
+    </p>
+
+    <p class="story-text">
+        Hoy queremos celebrar nuestro amor junto a las
+        personas que han formado parte de nuestra historia.
+    </p>
+
+    <div class="story-photo">
+
+        <img src="assets/pareja.jpg"
+             alt="Anderson y Esmeralda">
+
+        <div class="photo-frame"></div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     CUENTA REGRESIVA
+===================================================== -->
+
+<section id="countdown"
+         class="countdown-section section reveal">
+
+    <p class="eyebrow">
+        FALTA MUY POCO
+    </p>
+
+    <h2>
+        Nuestro gran día
+    </h2>
+
+    <div class="gold-line"></div>
+
+    <div class="countdown">
+
+        <div class="time-box">
+            <span id="days">00</span>
+            <small>Días</small>
+        </div>
+
+        <div class="time-separator">:</div>
+
+        <div class="time-box">
+            <span id="hours">00</span>
+            <small>Horas</small>
+        </div>
+
+        <div class="time-separator">:</div>
+
+        <div class="time-box">
+            <span id="minutes">00</span>
+            <small>Minutos</small>
+        </div>
+
+        <div class="time-separator">:</div>
+
+        <div class="time-box">
+            <span id="seconds">00</span>
+            <small>Segundos</small>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     DETALLES
+===================================================== -->
+
+<section class="details section reveal">
+
+    <p class="eyebrow">
+        AGENDA
+    </p>
+
+    <h2>
+        Acompáñanos
+    </h2>
+
+    <div class="gold-line"></div>
+
+
+    <div class="event-grid">
+
+
+        <!-- CEREMONIA -->
+
+        <article class="event-card">
+
+            <div class="event-icon">
+                ♡
+            </div>
+
+            <p class="event-type">
+                CEREMONIA
+            </p>
+
+            <h3>
+                La Ceremonia
+            </h3>
+
+            <div class="event-info">
+
+                <p>
+                    <strong>5:00 PM</strong>
+                </p>
+
+                <p>
+                    Parroquia La Sagrada Familia
+                </p>
+
+                <p>
+                    Tuluá, Valle del Cauca
+                </p>
+
+            </div>
+
+
+            <!-- MINI MAPA -->
+
+            <div class="map-preview">
+
+                <div class="map-grid"></div>
+
+                <div class="map-road road-one"></div>
+                <div class="map-road road-two"></div>
+                <div class="map-road road-three"></div>
+
+                <div class="map-pin">
+                    📍
+                </div>
+
+                <div class="map-label">
+                    La Sagrada Familia
+                </div>
+
+            </div>
+
+
+            <a href="https://maps.google.com/?cid=17780902812501791559"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="map-button">
+
+                📍 Ver ubicación
+
+            </a>
+
+        </article>
+
+
+        <!-- RECEPCIÓN -->
+
+        <article class="event-card">
+
+            <div class="event-icon">
+                ♡
+            </div>
+
+            <p class="event-type">
+                RECEPCIÓN
+            </p>
+
+            <h3>
+                La Recepción
+            </h3>
+
+            <div class="event-info">
+
+                <p>
+                    <strong>8:00 PM</strong>
+                </p>
+
+                <p>
+                    Finca Villa Alana
+                </p>
+
+                <p>
+                    Farfán, Palomestizo
+                    <br>
+                    Tuluá, Valle del Cauca
+                </p>
+
+            </div>
+
+
+            <!-- MINI MAPA -->
+
+            <div class="map-preview">
+
+                <div class="map-grid"></div>
+
+                <div class="map-road road-one"></div>
+                <div class="map-road road-two"></div>
+                <div class="map-road road-three"></div>
+
+                <div class="map-pin">
+                    📍
+                </div>
+
+                <div class="map-label">
+                    Finca Villa Alana
+                </div>
+
+            </div>
+
+
+            <a href="https://maps.google.com/?cid=12772945322594579210"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="map-button">
+
+                📍 Ver ubicación
+
+            </a>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     DRESS CODE
+===================================================== -->
+
+<section class="dress-code section reveal">
+
+    <div class="dress-inner">
+
+        <div class="section-decoration">
+            ❦
+        </div>
+
+        <p class="eyebrow">
+            UN PEQUEÑO DETALLE
+        </p>
+
+        <h2>
+            Código de vestimenta
+        </h2>
+
+        <div class="gold-line"></div>
+
+        <div class="dress-icon">
+            ♧
+        </div>
+
+        <h3>
+            Elegante
+        </h3>
+
+        <p>
+            Queremos verte celebrar con nosotros
+            luciendo tu mejor versión.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FOTOS
+===================================================== -->
+
+<section class="photo-invitation section reveal">
+
+    <div class="photo-card">
+
+        <div class="photo-card-decoration">
+            ✿
+        </div>
+
+        <p class="eyebrow">
+            NUESTROS RECUERDOS
+        </p>
+
+        <h2>
+            Tú también haces
+            parte de nuestra historia
+        </h2>
+
+        <div class="gold-line"></div>
+
+        <p>
+            Durante la celebración podrás compartir
+            las fotografías que tomes con nosotros.
+        </p>
+
+        <a href="fotos.html"
+           class="main-button">
+
+            📸 Compartir fotos
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     RSVP
+===================================================== -->
+
+<section class="rsvp section reveal">
+
+    <div class="rsvp-content">
+
+        <div class="heart">
+            ♥
+        </div>
+
+        <p class="eyebrow">
+            CONFIRMA TU ASISTENCIA
+        </p>
+
+        <h2>
+            ¿Nos acompañas?
+        </h2>
+
+        <div class="gold-line"></div>
+
+        <p>
+            Por favor confirma tu asistencia
+            antes del
+            <strong>15 de octubre de 2026</strong>.
+        </p>
+
+        <!-- CAMBIAR NÚMERO -->
+
+        <a href="https://wa.me/573000000000?text=¡Hola!%20Quiero%20confirmar%20mi%20asistencia%20a%20la%20boda%20de%20Anderson%20y%20Esmeralda."
+           target="_blank"
+           rel="noopener noreferrer"
+           class="whatsapp-button">
+
+            <span>💬</span>
+
+            Confirmar por WhatsApp
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     COMPARTIR
+===================================================== -->
+
+<section class="share-section">
+
+    <h2>
+        Comparte nuestra invitación
+    </h2>
+
+    <p>
+        Ayúdanos a hacer llegar este pequeño
+        pedacito de nuestra historia.
+    </p>
+
+    <button id="shareButton"
+            class="share-button">
+
+        🔗 Compartir invitación
+
+    </button>
+
+</section>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <div class="footer-flower">
+        ❦
+    </div>
+
+    <p>
+        Con mucho amor,
+    </p>
+
+    <h2>
+        Anderson & Esmeralda
+    </h2>
+
+    <p class="footer-date">
+        7 · 12 · 2026
+    </p>
+
+</footer>
+
+</main>
+
+
+<script src="script.js"></script>
 
 </body>
 </html>

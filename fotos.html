@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color"
+          content="#748b73">
+
+    <title>
+        Nuestros recuerdos | Anderson & Esmeralda
+    </title>
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="fotos.css">
+
+</head>
+
+
+<body>
+
+
+<header class="photo-header">
+
+    <a href="index.html"
+       class="back-button">
+
+        ← Invitación
+
+    </a>
+
+
+    <div class="header-content">
+
+        <p class="eyebrow">
+            ANDERSON & ESMERALDA
+        </p>
+
+        <h1>
+            Nuestros recuerdos
+        </h1>
+
+        <p>
+            Las fotografías que ustedes
+            tomen también serán parte
+            de nuestra historia.
+        </p>
+
+    </div>
+
+</header>
+
+
+<main>
+
+
+<section class="upload-section">
+
+    <div class="upload-card">
+
+        <div class="camera-icon">
+            📸
+        </div>
+
+        <h2>
+            Comparte tus fotos
+        </h2>
+
+        <p>
+            Selecciona una o varias fotografías
+            desde tu celular.
+        </p>
+
+
+        <label for="photoInput"
+               class="upload-button">
+
+            📷 Seleccionar fotografías
+
+        </label>
+
+
+        <input
+            type="file"
+            id="photoInput"
+            accept="image/*"
+            multiple
+            hidden
+        >
+
+
+        <div id="selectedFiles"
+             class="selected-files">
+        </div>
+
+
+        <button id="uploadButton"
+                class="upload-button secondary"
+                disabled>
+
+            ☁️ Subir fotografías
+
+        </button>
+
+
+        <div id="uploadProgress"
+             class="upload-progress">
+
+            <div id="progressBar"
+                 class="progress-bar">
+            </div>
+
+        </div>
+
+
+        <p id="uploadMessage"
+           class="upload-message">
+        </p>
+
+    </div>
+
+</section>
+
+
+<section class="gallery-section">
+
+    <div class="gallery-heading">
+
+        <p class="eyebrow">
+            LOS RECUERDOS DE NUESTRO DÍA
+        </p>
+
+        <h2>
+            Galería
+        </h2>
+
+        <div class="gold-line"></div>
+
+        <p>
+            Todas las fotografías compartidas
+            aparecerán aquí.
+        </p>
+
+    </div>
+
+
+    <div id="gallery"
+         class="gallery">
+
+        <div class="loading">
+            Cargando recuerdos...
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- VISOR DE FOTO -->
+
+<div id="lightbox"
+     class="lightbox">
+
+    <button id="closeLightbox"
+            class="close-lightbox">
+
+        ×
+
+    </button>
+
+
+    <img id="lightboxImage"
+         src=""
+         alt="Fotografía">
+
+</div>
+
+
+<footer>
+
+    <div>
+        ❦
+    </div>
+
+    <p>
+        Anderson & Esmeralda
+    </p>
+
+    <small>
+        7 · 12 · 2026
+    </small>
+
+</footer>
+
+
+<!-- Supabase -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="fotos.js"></script>
+
+</body>
+
+</html>

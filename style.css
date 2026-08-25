@@ -1,146 +1,1531 @@
-/* style.css */
+/* =====================================================
+   VARIABLES
+===================================================== */
+
 :root {
-    --primary-color: #2c3e50; /* Azul oscuro elegante */
-    --accent-color: #d4af37;  /* Dorado */
-    --bg-color: #fdfbf7;      /* Crema suave */
+
+    --green-dark: #435745;
+    --green: #748b73;
+    --green-light: #aebdaa;
+    --green-soft: #dfe7dc;
+
+    --cream: #f8f6ef;
+    --cream-dark: #eee9dc;
+
+    --gold: #b89a5d;
+    --gold-light: #d7c08b;
+
+    --white: #ffffff;
+    --text: #435044;
+
+    --shadow:
+        0 15px 40px rgba(54, 72, 55, 0.12);
+
+    --radius: 22px;
+
 }
 
-body {
-    font-family: 'Lato', sans-serif;
-    background-color: var(--bg-color);
-    color: var(--primary-color);
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
     margin: 0;
     padding: 0;
-    text-align: center;
+    box-sizing: border-box;
 }
 
-h2, h3 {
-    font-family: 'Playfair Display', serif;
-    font-weight: normal;
-    margin-top: 0;
+
+html {
+    scroll-behavior: smooth;
 }
 
-/* Portada de la invitación */
-.hero {
-    background-color: #f4eee1;
-    padding: 100px 20px;
-    border-bottom: 3px solid var(--accent-color);
+
+body {
+
+    font-family: 'Lato', sans-serif;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            rgba(174, 189, 170, 0.25),
+            transparent 30%
+        ),
+        var(--cream);
+
+    color: var(--text);
+
+    overflow-x: hidden;
+
 }
 
-/* Tipografía Cursiva Elegante y Legible */
-.names {
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+/* =====================================================
+   TIPOGRAFÍA
+===================================================== */
+
+h1,
+h2,
+h3 {
+    font-family: 'Cormorant Garamond', serif;
+}
+
+
+.names,
+.welcome-content h1 {
+
     font-family: 'Alex Brush', cursive;
-    font-size: 5rem;
-    font-weight: normal;
-    margin: 0;
-    color: var(--primary-color);
-    line-height: 1.2;
+
 }
 
-.hero .subtitle {
-    font-size: 1.2rem;
-    letter-spacing: 3px;
+
+h2 {
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    font-weight: 500;
+}
+
+
+p {
+    line-height: 1.8;
+}
+
+
+/* =====================================================
+   UTILIDADES
+===================================================== */
+
+.hidden {
+    display: none;
+}
+
+
+.section {
+    padding: 110px 20px;
+    position: relative;
+}
+
+
+.eyebrow {
+
+    font-size: 0.75rem;
+
+    letter-spacing: 4px;
+
     text-transform: uppercase;
-    margin-top: 15px;
+
+    color: var(--gold);
+
+    font-weight: 700;
+
 }
 
-.hero .date {
-    font-size: 1.8rem;
-    font-style: italic;
-    color: var(--accent-color);
-    margin-top: 15px;
+
+.gold-line {
+
+    width: 70px;
+    height: 2px;
+
+    background: var(--gold);
+
+    margin: 22px auto 35px;
+
 }
 
-/* Detalles del evento */
-.details {
-    padding: 60px 20px;
+
+.section-decoration {
+
+    color: var(--gold);
+
+    font-size: 2rem;
+
+    margin-bottom: 15px;
+
 }
 
-.details h2 {
-    font-size: 2.5rem;
-    margin-bottom: 40px;
-}
 
-.cards-container {
+/* =====================================================
+   PANTALLA DE BIENVENIDA
+===================================================== */
+
+.welcome-screen {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
     display: flex;
-    flex-wrap: wrap;
+
     justify-content: center;
-    gap: 30px;
+
+    align-items: center;
+
+    text-align: center;
+
+    background:
+
+        radial-gradient(
+            circle at center,
+            rgba(255,255,255,0.95),
+            rgba(223,231,220,0.98)
+        );
+
+    transition:
+        opacity 1s ease,
+        visibility 1s ease;
+
 }
 
-.card {
-    background: white;
-    padding: 35px 25px;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
-    width: 100%;
-    max-width: 320px;
-    border-top: 4px solid var(--accent-color);
+
+.welcome-screen.hide {
+
+    opacity: 0;
+
+    visibility: hidden;
+
+}
+
+
+.welcome-content {
+
+    width: min(90%, 600px);
+
+    padding: 40px 20px;
+
+}
+
+
+.small-title {
+
+    font-size: 0.75rem;
+
+    letter-spacing: 4px;
+
+    color: var(--gold);
+
+}
+
+
+.welcome-content h1 {
+
+    font-size: clamp(4rem, 12vw, 8rem);
+
+    line-height: 0.9;
+
+    color: var(--green-dark);
+
+    margin: 25px 0;
+
+}
+
+
+.welcome-content h1 span {
+
+    display: block;
+
+    font-size: 0.55em;
+
+    color: var(--gold);
+
+}
+
+
+.welcome-content p {
+
+    max-width: 450px;
+
+    margin: auto;
+
+}
+
+
+.welcome-decoration {
+
+    position: absolute;
+
+    font-size: 8rem;
+
+    opacity: 0.15;
+
+}
+
+
+.welcome-left {
+
+    left: -30px;
+    bottom: 30px;
+
+    transform: rotate(-30deg);
+
+}
+
+
+.welcome-right {
+
+    right: -30px;
+    top: 30px;
+
+    transform: rotate(30deg);
+
+}
+
+
+/* =====================================================
+   BOTÓN PRINCIPAL
+===================================================== */
+
+.main-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-top: 30px;
+
+    padding: 15px 30px;
+
+    border: none;
+
+    border-radius: 50px;
+
+    background: var(--green-dark);
+
+    color: white;
+
+    text-decoration: none;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+
+}
+
+
+.main-button:hover {
+
+    transform: translateY(-4px);
+
+    background: var(--green);
+
+    box-shadow:
+        0 10px 25px rgba(67,87,69,0.25);
+
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero {
+
+    min-height: 100svh;
+
+    position: relative;
+
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    overflow: hidden;
+
+    color: white;
+
+    background:
+
+        linear-gradient(
+            rgba(50, 68, 51, 0.38),
+            rgba(50, 68, 51, 0.58)
+        ),
+
+        url("assets/fondo-boda.jpg")
+        center / cover no-repeat;
+
 }
 
-.card h3 {
-    font-size: 1.8rem;
-    color: var(--accent-color);
+
+.hero::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 20px;
+
+    border: 1px solid rgba(255,255,255,0.45);
+
+    pointer-events: none;
+
 }
 
-/* Botón de ubicación en la tarjeta */
-.map-btn {
+
+.hero-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle,
+            transparent 25%,
+            rgba(20,40,20,0.3)
+        );
+
+}
+
+
+.hero-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: min(95%, 900px);
+
+    padding: 40px 20px;
+
+}
+
+
+.hero .eyebrow {
+
+    color: var(--gold-light);
+
+}
+
+
+.names {
+
+    font-size: clamp(4.5rem, 13vw, 9rem);
+
+    line-height: 0.9;
+
+    font-weight: normal;
+
+    margin: 25px 0;
+
+    text-shadow:
+        0 5px 20px rgba(0,0,0,0.25);
+
+}
+
+
+.names span {
+
+    display: block;
+
+    font-size: 0.5em;
+
+    color: var(--gold-light);
+
+}
+
+
+.hero-message {
+
+    font-family:
+        'Cormorant Garamond',
+        serif;
+
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+
+    font-style: italic;
+
+}
+
+
+.hero-line {
+
+    width: 80px;
+
+    height: 1px;
+
+    background: var(--gold-light);
+
+    margin: 20px auto;
+
+}
+
+
+.hero-date {
+
+    font-family:
+        'Cormorant Garamond',
+        serif;
+
+    font-size: 1.7rem;
+
+}
+
+
+.hero-location {
+
+    margin-top: 5px;
+
+    letter-spacing: 2px;
+
+}
+
+
+.scroll-button {
+
     display: inline-block;
-    margin-top: 15px;
-    padding: 10px 15px;
-    background-color: transparent;
-    color: var(--primary-color);
-    border: 1px solid var(--primary-color);
-    border-radius: 6px;
+
+    margin-top: 35px;
+
+    padding: 12px 22px;
+
+    color: white;
+
+    border: 1px solid rgba(255,255,255,0.6);
+
+    border-radius: 50px;
+
     text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: bold;
-    transition: all 0.3s ease;
+
+    transition: 0.3s;
+
 }
 
-.map-btn:hover {
-    background-color: var(--primary-color);
+
+.scroll-button:hover {
+
+    background: rgba(255,255,255,0.15);
+
+}
+
+
+/* =====================================================
+   PÉTALOS
+===================================================== */
+
+.floating-petal {
+
+    position: absolute;
+
+    color: rgba(255,255,255,0.45);
+
+    animation:
+        floatPetal 7s ease-in-out infinite;
+
+}
+
+
+.petal-1 {
+    top: 15%;
+    left: 10%;
+}
+
+
+.petal-2 {
+    top: 30%;
+    right: 15%;
+    animation-delay: 2s;
+}
+
+
+.petal-3 {
+    bottom: 15%;
+    left: 18%;
+    animation-delay: 4s;
+}
+
+
+.petal-4 {
+    bottom: 25%;
+    right: 10%;
+    animation-delay: 1s;
+}
+
+
+@keyframes floatPetal {
+
+    0%,
+    100% {
+        transform:
+            translateY(0)
+            rotate(0deg);
+    }
+
+    50% {
+        transform:
+            translateY(-25px)
+            rotate(15deg);
+    }
+
+}
+
+
+/* =====================================================
+   BOTÓN DE MÚSICA
+===================================================== */
+
+.music-button {
+
+    position: fixed;
+
+    right: 20px;
+    bottom: 20px;
+
+    z-index: 100;
+
+    width: 52px;
+    height: 52px;
+
+    border-radius: 50%;
+
+    border: 1px solid var(--gold);
+
+    background:
+        rgba(255,255,255,0.9);
+
+    box-shadow: var(--shadow);
+
+    cursor: pointer;
+
+    font-size: 1.2rem;
+
+}
+
+
+/* =====================================================
+   HISTORIA
+===================================================== */
+
+.story {
+
+    text-align: center;
+
+    max-width: 1000px;
+
+    margin: auto;
+
+}
+
+
+.story-text {
+
+    max-width: 700px;
+
+    margin: 0 auto 20px;
+
+}
+
+
+.story-photo {
+
+    position: relative;
+
+    width: min(90%, 500px);
+
+    margin: 50px auto 0;
+
+}
+
+
+.story-photo img {
+
+    width: 100%;
+
+    aspect-ratio: 4 / 5;
+
+    object-fit: cover;
+
+    border-radius: 200px 200px 20px 20px;
+
+    box-shadow: var(--shadow);
+
+}
+
+
+.photo-frame {
+
+    position: absolute;
+
+    inset: 12px;
+
+    border: 1px solid var(--gold);
+
+    border-radius: 190px 190px 15px 15px;
+
+    pointer-events: none;
+
+}
+
+
+/* =====================================================
+   CUENTA REGRESIVA
+===================================================== */
+
+.countdown-section {
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--green-dark),
+            var(--green)
+        );
+
     color: white;
+
+    text-align: center;
+
 }
 
-/* Sección RSVP / Confirmación */
-.rsvp {
-    padding: 80px 20px;
-    background-color: var(--primary-color);
-    color: white;
+
+.countdown-section .eyebrow {
+    color: var(--gold-light);
 }
 
-.rsvp h2 {
-    color: var(--accent-color);
-    font-size: 2.5rem;
+
+.countdown {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: clamp(8px, 3vw, 30px);
+
+    margin-top: 40px;
+
 }
 
-.btn {
-    display: inline-block;
-    margin-top: 25px;
-    padding: 15px 35px;
-    background-color: #25d366; /* Verde tipo WhatsApp para destacar */
-    color: white;
-    text-decoration: none;
+
+.time-box {
+
+    min-width: 90px;
+
+}
+
+
+.time-box span {
+
+    display: block;
+
+    font-family:
+        'Cormorant Garamond',
+        serif;
+
+    font-size: clamp(2.5rem, 8vw, 5rem);
+
+    line-height: 1;
+
+}
+
+
+.time-box small {
+
+    display: block;
+
+    margin-top: 10px;
+
     text-transform: uppercase;
-    font-weight: bold;
-    letter-spacing: 1px;
+
+    letter-spacing: 2px;
+
+    font-size: 0.65rem;
+
+}
+
+
+.time-separator {
+
+    font-size: 2rem;
+
+    color: var(--gold-light);
+
+}
+
+
+/* =====================================================
+   EVENTOS
+===================================================== */
+
+.details {
+
+    text-align: center;
+
+    background: var(--cream);
+
+}
+
+
+.event-grid {
+
+    max-width: 1100px;
+
+    margin: 50px auto 0;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 35px;
+
+}
+
+
+.event-card {
+
+    background: white;
+
+    padding: 40px;
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--shadow);
+
+    position: relative;
+
+    overflow: hidden;
+
+}
+
+
+.event-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 5px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--green),
+            var(--gold),
+            var(--green)
+        );
+
+}
+
+
+.event-icon {
+
+    width: 60px;
+    height: 60px;
+
+    display: grid;
+
+    place-items: center;
+
+    margin: auto;
+
+    border-radius: 50%;
+
+    background: var(--green-soft);
+
+    color: var(--green-dark);
+
+    font-size: 1.5rem;
+
+}
+
+
+.event-type {
+
+    margin-top: 20px;
+
+    font-size: 0.7rem;
+
+    letter-spacing: 3px;
+
+    color: var(--gold);
+
+}
+
+
+.event-card h3 {
+
+    font-size: 2.5rem;
+
+    margin: 10px 0 20px;
+
+}
+
+
+.event-info p {
+
+    margin: 7px 0;
+
+}
+
+
+/* =====================================================
+   MINI MAPA
+===================================================== */
+
+.map-preview {
+
+    height: 210px;
+
+    margin: 30px 0 20px;
+
+    border-radius: 15px;
+
+    overflow: hidden;
+
+    position: relative;
+
+    background:
+        #dce5d9;
+
+}
+
+
+.map-grid {
+
+    position: absolute;
+
+    inset: 0;
+
+    opacity: 0.35;
+
+    background-image:
+
+        linear-gradient(
+            rgba(80,100,80,0.25) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(80,100,80,0.25) 1px,
+            transparent 1px
+        );
+
+    background-size: 35px 35px;
+
+}
+
+
+.map-road {
+
+    position: absolute;
+
+    background: #f7f4e9;
+
+    height: 20px;
+
+    transform-origin: center;
+
+}
+
+
+.road-one {
+
+    width: 130%;
+
+    left: -15%;
+
+    top: 45%;
+
+    transform: rotate(-12deg);
+
+}
+
+
+.road-two {
+
+    width: 100%;
+
+    left: 0;
+
+    top: 65%;
+
+    transform: rotate(25deg);
+
+}
+
+
+.road-three {
+
+    width: 120%;
+
+    left: -10%;
+
+    top: 20%;
+
+    transform: rotate(8deg);
+
+}
+
+
+.map-pin {
+
+    position: absolute;
+
+    left: 50%;
+    top: 48%;
+
+    transform:
+        translate(-50%, -50%);
+
+    font-size: 2.4rem;
+
+    filter:
+        drop-shadow(
+            0 4px 5px
+            rgba(0,0,0,0.2)
+        );
+
+}
+
+
+.map-label {
+
+    position: absolute;
+
+    bottom: 12px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    background: rgba(255,255,255,0.92);
+
+    padding: 7px 14px;
+
+    border-radius: 20px;
+
+    font-size: 0.75rem;
+
+    white-space: nowrap;
+
+}
+
+
+.map-button {
+
+    display: inline-block;
+
+    padding: 11px 22px;
+
+    border: 1px solid var(--green);
+
+    color: var(--green-dark);
+
     border-radius: 30px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    transition: transform 0.2s, background-color 0.3s;
+
+    text-decoration: none;
+
+    font-weight: 700;
+
+    transition: 0.3s;
+
 }
 
-.btn:hover {
-    background-color: #1eb956;
-    transform: translateY(-2px);
+
+.map-button:hover {
+
+    background: var(--green-dark);
+
+    color: white;
+
 }
 
-/* Pie de página */
+
+/* =====================================================
+   DRESS CODE
+===================================================== */
+
+.dress-code {
+
+    text-align: center;
+
+    background:
+
+        linear-gradient(
+            rgba(223,231,220,0.9),
+            rgba(223,231,220,0.9)
+        );
+
+}
+
+
+.dress-inner {
+
+    max-width: 700px;
+
+    margin: auto;
+
+}
+
+
+.dress-icon {
+
+    font-size: 3rem;
+
+    color: var(--gold);
+
+    margin: 20px;
+
+}
+
+
+.dress-inner h3 {
+
+    font-size: 2.5rem;
+
+}
+
+
+/* =====================================================
+   FOTO INVITACIÓN
+===================================================== */
+
+.photo-invitation {
+
+    background:
+        radial-gradient(
+            circle at center,
+            white,
+            var(--cream)
+        );
+
+    text-align: center;
+
+}
+
+
+.photo-card {
+
+    max-width: 800px;
+
+    margin: auto;
+
+    padding: 70px 30px;
+
+    background: white;
+
+    border-radius: 30px;
+
+    box-shadow: var(--shadow);
+
+    position: relative;
+
+    overflow: hidden;
+
+}
+
+
+.photo-card::before,
+.photo-card::after {
+
+    content: "✿";
+
+    position: absolute;
+
+    color: var(--green-light);
+
+    font-size: 7rem;
+
+    opacity: 0.3;
+
+}
+
+
+.photo-card::before {
+
+    left: -30px;
+    top: -20px;
+
+}
+
+
+.photo-card::after {
+
+    right: -30px;
+    bottom: -20px;
+
+}
+
+
+.photo-card h2 {
+
+    max-width: 650px;
+
+    margin: auto;
+
+}
+
+
+/* =====================================================
+   RSVP
+===================================================== */
+
+.rsvp {
+
+    background:
+        linear-gradient(
+            135deg,
+            #354735,
+            #566c55
+        );
+
+    color: white;
+
+    text-align: center;
+
+}
+
+
+.rsvp-content {
+
+    max-width: 700px;
+
+    margin: auto;
+
+}
+
+
+.rsvp .eyebrow {
+
+    color: var(--gold-light);
+
+}
+
+
+.heart {
+
+    color: var(--gold-light);
+
+    font-size: 2rem;
+
+    margin-bottom: 15px;
+
+}
+
+
+.whatsapp-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-top: 30px;
+
+    padding: 16px 28px;
+
+    background: #25D366;
+
+    color: white;
+
+    border-radius: 50px;
+
+    text-decoration: none;
+
+    font-weight: 700;
+
+    transition: 0.3s;
+
+}
+
+
+.whatsapp-button:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 25px
+        rgba(0,0,0,0.25);
+
+}
+
+
+/* =====================================================
+   COMPARTIR
+===================================================== */
+
+.share-section {
+
+    text-align: center;
+
+    padding: 70px 20px;
+
+}
+
+
+.share-section h2 {
+
+    font-size: 2.3rem;
+
+}
+
+
+.share-button {
+
+    margin-top: 25px;
+
+    border: 1px solid var(--green);
+
+    background: transparent;
+
+    color: var(--green-dark);
+
+    border-radius: 50px;
+
+    padding: 13px 25px;
+
+    cursor: pointer;
+
+    font-weight: 700;
+
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
 footer {
-    padding: 30px;
-    font-size: 0.9rem;
-    opacity: 0.8;
+
+    text-align: center;
+
+    padding: 70px 20px;
+
+    background: var(--cream-dark);
+
+}
+
+
+.footer-flower {
+
+    font-size: 2rem;
+
+    color: var(--gold);
+
+}
+
+
+footer h2 {
+
+    font-family: 'Alex Brush', cursive;
+
+    font-size: 4rem;
+
+    color: var(--green-dark);
+
+}
+
+
+.footer-date {
+
+    letter-spacing: 4px;
+
+    color: var(--gold);
+
+}
+
+
+/* =====================================================
+   ANIMACIONES SCROLL
+===================================================== */
+
+.reveal {
+
+    opacity: 0;
+
+    transform: translateY(40px);
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+
+}
+
+
+.reveal.visible {
+
+    opacity: 1;
+
+    transform: translateY(0);
+
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 800px) {
+
+    .event-grid {
+
+        grid-template-columns: 1fr;
+
+        max-width: 600px;
+
+    }
+
+}
+
+
+/* =====================================================
+   CELULARES
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .section {
+
+        padding: 80px 18px;
+
+    }
+
+
+    .hero::before {
+
+        inset: 10px;
+
+    }
+
+
+    .names {
+
+        font-size: clamp(4rem, 20vw, 6rem);
+
+    }
+
+
+    .hero-date {
+
+        font-size: 1.4rem;
+
+    }
+
+
+    .countdown {
+
+        gap: 4px;
+
+    }
+
+
+    .time-box {
+
+        min-width: 62px;
+
+    }
+
+
+    .time-box span {
+
+        font-size: 2.3rem;
+
+    }
+
+
+    .time-box small {
+
+        font-size: 0.52rem;
+
+        letter-spacing: 1px;
+
+    }
+
+
+    .time-separator {
+
+        font-size: 1.3rem;
+
+    }
+
+
+    .event-card {
+
+        padding: 30px 20px;
+
+    }
+
+
+    .event-card h3 {
+
+        font-size: 2.2rem;
+
+    }
+
+
+    .map-preview {
+
+        height: 180px;
+
+    }
+
+
+    .welcome-content h1 {
+
+        font-size: 5rem;
+
+    }
+
+
+    footer h2 {
+
+        font-size: 3.2rem;
+
+    }
+
+}
+
+
+/* =====================================================
+   REDUCIR MOVIMIENTO
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        scroll-behavior: auto !important;
+
+        transition-duration: 0.01ms !important;
+
+    }
+
 }
