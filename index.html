@@ -70,7 +70,34 @@
      CONTENIDO PRINCIPAL
 ===================================================== -->
 
-<main id="mainContent" class="hidden">
+<!-- =====================================================
+     ANIMACIÓN DE SOBRE (TRANSICIÓN INTERACTIVA)
+===================================================== -->
+<div id="envelopeContainer" class="envelope-container">
+    <div id="interactiveEnvelope" class="envelope">
+        
+        <!-- Parte trasera del sobre (fondo) -->
+        <div class="envelope-part envelope-back"></div>
+        
+        <!-- Carta que va adentro (¡NUEVO!) -->
+        <div class="envelope-letter">
+            <p>Nuestra Boda</p>
+        </div>
+        
+        <!-- Solapas laterales y trasera inferior -->
+        <div class="envelope-part envelope-left"></div>
+        <div class="envelope-part envelope-right"></div>
+        <div class="envelope-part envelope-bottom"></div>
+        
+        <!-- Solapa superior (la que se abre) -->
+        <div class="envelope-flap"></div>
+
+        <!-- Sello independiente -->
+        <div class="envelope-stamp">A &amp; E</div>
+        
+    </div>
+    <p class="envelope-hint">Toca el sello para abrir</p>
+</div>
 
 
 <!-- =====================================================

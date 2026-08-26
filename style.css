@@ -1262,6 +1262,165 @@ footer h2 {
 
 
 /* =====================================================
+   ANIMACIÓN DEL SOBRE (TRANSICIÓN INTERACTIVA)
+===================================================== */
+.envelope-container {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.envelope-container.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto; 
+}
+
+.envelope {
+    width: min(85vw, 450px);
+    height: min(55vw, 300px);
+    position: relative;
+    perspective: 1200px; /* Importante para el efecto 3D al abrir */
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.envelope:hover {
+    transform: translateY(-5px);
+}
+
+.envelope-part {
+    position: absolute;
+    inset: 0;
+    border-radius: 4px;
+}
+
+/* Capas del sobre ordenadas */
+.envelope-back { z-index: 1; background: var(--cream-dark); box-shadow: var(--shadow); }
+
+.envelope-left { z-index: 3; background: var(--cream); clip-path: polygon(0 0, 50% 50%, 0 100%); }
+.envelope-right { z-index: 3; background: var(--cream); clip-path: polygon(100% 0, 50% 50%, 100% 100%); }
+.envelope-bottom { z-index: 4; background: var(--cream-dark); clip-path: polygon(0 100%, 50% 50%, 100% 100%); }
+
+/* La carta adentro */
+.envelope-letter {
+    position: absolute;
+    bottom: 5px;
+    left: 5%;
+    width: 90%;
+    height: 95%;
+    background: var(--white);
+    border-radius: 5px;
+    z-index: 2; /* Encima del fondo, debajo de las solapas frontales */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--green-dark);
+    font-size: 1.5rem;
+    font-style: italic;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    transition: transform 0.8s ease 0.6s; /* Sale un poco después de que la solapa se levanta */
+}
+
+/* Solapa superior */
+.envelope-flap {
+    position: absolute;
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    height: 60%;
+    background: var(--cream);
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    transform-origin: top; /* Gira desde arriba */
+    z-index: 5;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Sello A & E (Arreglado) */
+.envelope-stamp {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px; /* Más ancho */
+    height: 100px; /* Más alto */
+    background: var(--gold);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Alex Brush', cursive;
+    font-size: 1.8rem;
+    white-space: nowrap; /* EVITA QUE SE BAJE DE LÍNEA */
+    border: 2px dashed rgba(255,255,255,0.4);
+    z-index: 6; 
+    animation: pulseStamp 2s infinite; 
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+@keyframes pulseStamp {
+    0% { box-shadow: 0 0 0 0 rgba(184, 154, 93, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(184, 154, 93, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(184, 154, 93, 0); }
+}
+
+/* Texto de pista */
+.envelope-hint {
+    margin-top: 40px;
+    color: var(--green-dark);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-style: italic;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.envelope-container.active .envelope-hint { opacity: 1; transition-delay: 0.6s; }
+.envelope-container.opening .envelope-hint { opacity: 0; }
+
+/* ====================================
+   LA MAGIA (CLASES DINÁMICAS) 
+==================================== */
+
+/* 1. El sello estalla ligeramente y desaparece */
+.envelope.animate .envelope-stamp {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.5);
+}
+
+/* 2. La solapa rota hacia atrás en 3D */
+.envelope.animate .envelope-flap {
+    transform: rotateX(180deg);
+    z-index: 1; /* Se esconde atrás para dejar salir la carta */
+}
+
+/* 3. La carta se asoma hacia arriba */
+.envelope.animate .envelope-letter {
+    transform: translateY(-50px);
+}
+
+/* 4. Todo el sobre hace zoom hacia la pantalla */
+.envelope.animate {
+    animation: zoomEnvelope 1.2s forwards cubic-bezier(0.5, 0, 0.2, 1) 1.8s; /* Inicia a los 1.8s */
+}
+
+@keyframes zoomEnvelope {
+    0% { transform: translateY(-5px) scale(1); opacity: 1; }
+    100% { transform: translateY(-5px) scale(6); opacity: 0; }
+}
+
+
+/* =====================================================
    TABLET
 ===================================================== */
 

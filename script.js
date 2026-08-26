@@ -1,32 +1,55 @@
 /* =====================================================
-   PANTALLA DE BIENVENIDA
+   PANTALLA DE BIENVENIDA (ACTUALIZADA CON ANIMACIÓN)
 ===================================================== */
+/* =====================================================
+   PANTALLA DE BIENVENIDA (INTERACTIVA)
+===================================================== */
+const welcomeScreen = document.getElementById("welcomeScreen");
+const openInvitation = document.getElementById("openInvitation");
+const mainContent = document.getElementById("mainContent");
 
-const welcomeScreen =
-    document.getElementById("welcomeScreen");
+const envelopeContainer = document.getElementById("envelopeContainer");
+const envelope = document.getElementById("interactiveEnvelope");
+const welcomeContent = document.querySelector(".welcome-content");
 
-const openInvitation =
-    document.getElementById("openInvitation");
-
-const mainContent =
-    document.getElementById("mainContent");
-
-
+// 1er CLIC: El usuario presiona el botón "Abrir invitación" original
 openInvitation.addEventListener("click", () => {
+    // Desvanece el texto de bienvenida
+    welcomeContent.style.transition = "opacity 0.4s ease";
+    welcomeContent.style.opacity = "0";
 
-    welcomeScreen.classList.add("hide");
-
-    mainContent.classList.remove("hidden");
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-
-    startMusic();
-
+    // Muestra el sobre cerrado con su efecto de latido para invitar a tocarlo
+    envelopeContainer.classList.add("active");
 });
 
+// 2do CLIC: El usuario presiona físicamente el sobre o el sello
+envelope.addEventListener("click", () => {
+    
+    // Evita que hagan doble clic
+    envelopeContainer.style.pointerEvents = "none"; 
+    
+    // Oculta el texto de pista ("Toca el sello para abrir")
+    envelopeContainer.classList.add("opening");
+
+    // Inicia la magia: rompe el sello, levanta solapa y hace zoom
+    envelope.classList.add("animate");
+
+    // Espera a que termine la animación visual (aprox 2.4 segundos)
+    setTimeout(() => {
+        // Ejecuta la transición de la página y arranca la música
+        welcomeScreen.classList.add("hide");
+        envelopeContainer.classList.remove("active");
+        mainContent.classList.remove("hidden");
+        
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+        startMusic();
+    }, 3000);
+
+});
 
 /* =====================================================
    MÚSICA
