@@ -290,6 +290,7 @@ p {
 }
 .hero-location {
     margin-top: 5px;
+    margin-bottom: 25px; /* Ajusta este valor si quieres más o menos separación */
     letter-spacing: 2px;
 }
 .scroll-button {
@@ -1242,4 +1243,12 @@ footer h2 {
     .lightbox-arrow { width: 40px; height: 40px; font-size: 1.4rem; }
     .lightbox-prev { left: 6px; }
     .lightbox-next { right: 6px; }
+}
+/* PÉTALOS EN TODA LA PANTALLA */
+.petal-layer--global {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 99;
+    overflow: hidden;
 }
