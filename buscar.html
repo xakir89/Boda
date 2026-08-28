@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#748b73">
+<title>Busca tu invitación | Anderson & Esmeralda</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<main>
+    <section class="hero hero-buscar" style="min-height: 100svh;">
+        <div class="hero-overlay"></div>
+        <div class="hero-content reveal">
+            <p class="eyebrow">BUSCA TU NOMBRE</p>
+            <h1 class="names" style="font-size: clamp(3rem, 9vw, 5.5rem);">Tu invitación</h1>
+            <div class="hero-line"></div>
+            <p style="max-width: 480px; margin: 0 auto 10px; color: white;">
+                Escribe tu primer nombre para encontrar tu invitación personalizada.
+            </p>
+
+            <form id="searchForm" class="search-form" autocomplete="off">
+                <input
+                    type="text"
+                    id="searchInput"
+                    class="input-name input-name--dark"
+                    placeholder="Ej: Carlos"
+                    required
+                    minlength="2">
+                <button type="submit" class="main-button" style="margin-top: 18px;">
+                    🔍 Buscar mi invitación
+                </button>
+            </form>
+
+            <p id="searchStatus" class="search-status"></p>
+
+            <div id="resultsList" class="results-list"></div>
+        </div>
+    </section>
+</main>
+
+<script src="assets/nav.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script type="module" src="assets/buscar.js"></script>
+
+</body>
+</html>

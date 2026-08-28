@@ -1,32 +1,29 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#748b73">
-    <title>Nuestros recuerdos | Anderson & Esmeralda</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#748b73">
+<title>Nuestros recuerdos | Anderson & Esmeralda</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
 
 <main>
-    <!-- HERO DE LA GALERÍA -->
     <section class="hero hero-fotos" style="min-height: 40svh;">
         <div class="hero-overlay"></div>
         <div class="hero-content reveal">
             <p class="eyebrow">NUESTROS RECUERDOS</p>
             <h1 class="names">Galería</h1>
             <div class="hero-line"></div>
-            <a href="index.html" class="scroll-button">← Volver a la invitación</a>
+            <button class="scroll-button" onclick="irA('index.html')">← Volver a la invitación</button>
         </div>
     </section>
 
-    <!-- SECCIÓN PARA SUBIR FOTOS -->
     <section class="upload-section section reveal">
         <div class="event-card" style="max-width: 650px; margin: auto; text-align: center;">
             <div class="event-icon">📸</div>
@@ -34,42 +31,34 @@
             <h3>Sube tus fotos</h3>
             <div class="gold-line"></div>
             <p>Selecciona una o varias fotografías y dinos quién eres para guardarlas en nuestra historia.</p>
-            
+
             <div style="margin-top: 25px;">
                 <input type="text" id="uploaderName" placeholder="Tu nombre o el de tu familia" class="input-name" required>
             </div>
 
             <div style="margin-top: 20px;">
-                <label for="fileInput" class="main-button">
-                    📷 Seleccionar fotografías
-                </label>
-                <!-- Atributo 'multiple' permite seleccionar varias fotos -->
+                <label for="fileInput" class="main-button">📷 Seleccionar fotografías</label>
                 <input type="file" id="fileInput" accept="image/*" multiple hidden>
             </div>
 
             <div id="selectedFiles" class="event-type" style="margin-top: 15px;"></div>
 
-            <button id="uploadBtn" class="main-button" style="background: var(--gold); display: none; margin: 15px auto 0;">
-                ☁️ Subir fotografías
-            </button>
+            <button id="uploadBtn" class="main-button" style="background: var(--gold); display: none; margin: 15px auto 0;">☁️ Subir fotografías</button>
 
             <p id="uploadStatus" style="font-size: 1rem; margin-top: 15px; font-weight: bold;"></p>
         </div>
     </section>
 
-    <!-- SECCIÓN DE LA GALERÍA -->
     <section class="gallery-section section reveal">
         <div style="text-align: center;">
             <p class="eyebrow">EL DÍA MÁS FELIZ</p>
             <h2>Todas las fotos</h2>
             <div class="gold-line"></div>
-            <p>Las fotografías que compartan aparecerán aquí en tiempo real.</p>
+            <p>Toca cualquier foto para verla en grande y descargarla.</p>
         </div>
 
         <div id="galleryContainer" class="gallery-grid">
-            <div class="loading" style="grid-column: 1 / -1; text-align: center; margin-top: 20px;">
-                Cargando recuerdos...
-            </div>
+            <div class="loading" style="grid-column: 1 / -1; text-align: center; margin-top: 20px;">Cargando recuerdos...</div>
         </div>
     </section>
 </main>
@@ -80,25 +69,22 @@
     <p class="footer-date">7 · 12 · 2026</p>
 </footer>
 
-<!-- Animaciones (Reveal) independientes para esta página -->
-<script>
-    const revealElements = document.querySelectorAll(".reveal");
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add("visible");
-            }
-        });
-    }, { threshold: 0.12 });
+<!-- VISOR DE IMÁGENES (LIGHTBOX) -->
+<div id="lightbox" class="lightbox">
+    <button id="lightboxClose" class="lightbox-close" aria-label="Cerrar">✕</button>
+    <button id="lightboxPrev" class="lightbox-arrow lightbox-prev" aria-label="Anterior">‹</button>
+    <img id="lightboxImg" src="" alt="Recuerdo de la boda">
+    <button id="lightboxNext" class="lightbox-arrow lightbox-next" aria-label="Siguiente">›</button>
 
-    revealElements.forEach(element => {
-        observer.observe(element);
-    });
-</script>
+    <div class="lightbox-footer">
+        <p id="lightboxAuthor"></p>
+        <a id="lightboxDownload" class="main-button" download>📥 Descargar</a>
+    </div>
+</div>
 
-<!-- Scripts de Supabase -->
+<script src="assets/nav.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script type="module" src="app.js"></script>
+<script type="module" src="assets/app.js"></script>
 
 </body>
 </html>

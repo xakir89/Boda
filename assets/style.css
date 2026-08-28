@@ -365,7 +365,7 @@ p {
             rgba(50, 68, 51, 0.58)
         ),
 
-        url("assets/fondo-boda.jpg")
+        url("fondo-boda.jpg")
         center / cover no-repeat;
 
 }
@@ -505,11 +505,17 @@ p {
 
     color: white;
 
+    background: transparent;
+
     border: 1px solid rgba(255,255,255,0.6);
 
     border-radius: 50px;
 
     text-decoration: none;
+
+    cursor: pointer;
+
+    font: inherit;
 
     transition: 0.3s;
 
@@ -1566,39 +1572,6 @@ footer h2 {
     }
 
 }
-/* --- ESTILOS DE LA GALERÍA --- */
-.gallery {
-    padding: 80px 20px;
-    background-color: white;
-}
-
-.gallery h2 {
-    font-size: 2.5rem;
-    color: var(--primary-color);
-}
-
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 15px;
-    margin-top: 40px;
-    max-width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.gallery-grid img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
-}
-
-.gallery-grid img:hover {
-    transform: scale(1.05);
-}
 /* =====================================================
    ESTILOS EXCLUSIVOS PARA FOTOS.HTML
 ===================================================== */
@@ -1664,4 +1637,288 @@ footer h2 {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
     margin: 0;
+}
+/* =====================================================
+   PÉTALOS GENÉRICOS (generador crearPetalos en nav.js)
+   Se pueden montar en CUALQUIER sección con position:relative
+===================================================== */
+.petal-layer {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.drift-petal {
+    position: absolute;
+    top: -10%;
+    color: rgba(255, 255, 255, 0.55);
+    animation-name: driftDown;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+
+/* Variante para usar sobre fondos claros (fuera del hero) */
+.section .drift-petal,
+.dress-code .drift-petal {
+    color: rgba(184, 154, 93, 0.35);
+}
+
+@keyframes driftDown {
+    0% {
+        transform: translateY(-10vh) translateX(0) rotate(0deg);
+        opacity: 0;
+    }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% {
+        transform: translateY(110vh) translateX(40px) rotate(var(--giro-final, 220deg));
+        opacity: 0;
+    }
+}
+
+/* =====================================================
+   PÁGINA DE BÚSQUEDA (buscar.html)
+===================================================== */
+.hero-buscar,
+.hero-invitacion,
+.hero-fotos {
+    background:
+        linear-gradient(rgba(50, 68, 51, 0.55), rgba(50, 68, 51, 0.72)),
+        url("fondo-boda.jpg") center / cover no-repeat;
+}
+
+.search-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.input-name--dark {
+    background: rgba(255, 255, 255, 0.94);
+}
+
+.search-status {
+    margin-top: 20px;
+    font-weight: 700;
+    min-height: 1.4em;
+}
+
+.results-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 15px;
+    width: 100%;
+}
+
+.result-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    padding: 16px 22px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.94);
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    font-family: 'Lato', sans-serif;
+    color: var(--text);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.result-item strong {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    color: var(--green-dark);
+}
+
+.result-item span {
+    font-size: 0.8rem;
+    color: var(--gold);
+    letter-spacing: 1px;
+}
+
+.result-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* =====================================================
+   TARJETA DE INVITACIÓN PERSONALIZADA (invitacion.html)
+===================================================== */
+.invite-card {
+    background: white;
+    color: var(--text);
+    border-radius: 26px;
+    padding: 50px 30px;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    isolation: isolate; /* asegura que la decoración quede anclada a esta tarjeta */
+}
+
+.invite-card-decoration {
+    position: absolute;
+    top: -20px;
+    left: -10px;
+    font-size: 6rem;
+    color: var(--green-soft);
+    z-index: 0;
+}
+
+.invite-card > * {
+    position: relative;
+    z-index: 1;
+}
+
+.invite-names {
+    font-family: 'Alex Brush', cursive;
+    font-size: clamp(2.2rem, 8vw, 3.4rem);
+    color: var(--green-dark);
+    line-height: 1.15;
+    margin-top: 10px;
+}
+
+.invite-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    color: var(--gold);
+    margin-top: -6px;
+}
+
+.invite-detalle p {
+    font-size: 1.15rem;
+    margin: 6px 0;
+}
+
+.invite-detalle strong {
+    color: var(--green-dark);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+}
+
+.invite-fecha {
+    margin-top: 18px;
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+    color: var(--gold);
+    text-transform: uppercase;
+}
+
+.rsvp-inline-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 30px;
+}
+
+.main-button--outline {
+    background: transparent;
+    color: var(--green-dark);
+    border: 1.5px solid var(--green-dark);
+}
+
+.main-button--outline:hover {
+    background: var(--green-dark);
+    color: white;
+}
+
+.invite-confirmado {
+    margin-top: 25px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    color: var(--green-dark);
+}
+
+/* =====================================================
+   VISOR DE FOTOS (LIGHTBOX) — fotos.html
+===================================================== */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 9000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(20, 26, 20, 0.94);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+    padding: 30px 20px;
+}
+
+.lightbox.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.lightbox img {
+    max-width: min(92vw, 900px);
+    max-height: 70svh;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 18px;
+    right: 22px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    font-size: 1.3rem;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.lightbox-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    font-size: 1.8rem;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+}
+
+.lightbox-prev { left: 14px; }
+.lightbox-next { right: 14px; }
+
+.lightbox-footer {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.lightbox-footer p {
+    color: white;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+}
+
+@media (max-width: 600px) {
+    .lightbox-arrow { width: 40px; height: 40px; font-size: 1.4rem; }
+    .lightbox-prev { left: 6px; }
+    .lightbox-next { right: 6px; }
 }

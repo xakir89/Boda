@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#748b73">
+<title>Anderson & Esmeralda | Nuestra Boda</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+
+<style>
+    /* Esta página es solo la bienvenida: nunca debe scrollear */
+    html, body { height: 100%; overflow: hidden; }
+</style>
+</head>
+<body>
+
+<div id="welcomeScreen" class="welcome-screen">
+    <div class="welcome-decoration welcome-left">🌿</div>
+    <div class="welcome-decoration welcome-right">🌿</div>
+
+    <div class="welcome-content">
+        <span class="small-title">UNA INVITACIÓN ESPECIAL</span>
+        <h1>Anderson <span>&</span> Esmeralda</h1>
+        <p>Tenemos una historia que queremos compartir contigo.</p>
+        <button id="openInvitation" class="main-button">Abrir invitación <span>♡</span></button>
+    </div>
+</div>
+
+<div id="envelopeContainer" class="envelope-container">
+    <div id="interactiveEnvelope" class="envelope">
+        <div class="envelope-part envelope-back"></div>
+        <div class="envelope-letter"><p>Nuestra Boda</p></div>
+        <div class="envelope-part envelope-left"></div>
+        <div class="envelope-part envelope-right"></div>
+        <div class="envelope-part envelope-bottom"></div>
+        <div class="envelope-flap"></div>
+        <div class="envelope-stamp">A &amp; E</div>
+    </div>
+</div>
+
+<script src="assets/nav.js"></script>
+<script src="assets/inicio.js"></script>
+
+</body>
+</html>
