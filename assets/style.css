@@ -382,6 +382,7 @@ p {
 }
 .story-text {
     max-width: 700px;
+    text-align: justify;
     margin: 0 auto 20px;
 }
 .story-photo {
