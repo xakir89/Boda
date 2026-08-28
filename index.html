@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#748b73">
 <meta name="description" content="Invitación de boda de Anderson y Esmeralda">
 <title>Anderson & Esmeralda | Nuestra Boda</title>
@@ -11,158 +11,137 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
+
+<style>
+    /* Estilos exclusivos del ARCHIVO MAESTRO (no se repiten en otras páginas) */
+    html, body {
+        margin: 0;
+        height: 100%;
+        overflow: hidden;
+        background: var(--green-dark);
+    }
+    .frame-stage {
+        position: fixed;
+        inset: 0;
+    }
+    #channel {
+        width: 100%;
+        height: 100%;
+        border: none;
+        display: block;
+        background: var(--cream);
+    }
+    /* Flores globales fijas a los costados, por encima del iframe */
+    .frame-decor {
+        position: fixed;
+        top: 0;
+        height: 100%;
+        width: clamp(50px, 10vw, 150px);
+        z-index: 500;
+        pointer-events: none;
+        object-fit: cover;
+        opacity: 0.9;
+        filter: drop-shadow(0 0 18px rgba(0,0,0,0.15));
+    }
+    .frame-decor.left  { left: 0; }
+    .frame-decor.right { right: 0; }
+
+    /* En pantallas angostas, las flores estorban demasiado: las hacemos más
+       delgadas y más transparentes en vez de quitarlas del todo */
+    @media (max-width: 700px) {
+        .frame-decor { width: clamp(34px, 7vw, 70px); opacity: 0.75; }
+    }
+
+    /* Botón de música del maestro (vive fuera del iframe para no reiniciarse nunca) */
+    .music-button {
+        z-index: 600;
+    }
+
+    /* Pantalla de carga breve mientras arranca el iframe */
+    .frame-loader {
+        position: fixed;
+        inset: 0;
+        z-index: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--cream);
+        font-family: 'Alex Brush', cursive;
+        font-size: 3rem;
+        color: var(--green-dark);
+        transition: opacity 0.6s ease, visibility 0.6s ease;
+    }
+    .frame-loader.hide { opacity: 0; visibility: hidden; }
+</style>
 </head>
 <body>
 
-<main>
+<div id="frameLoader" class="frame-loader">Anderson & Esmeralda</div>
 
-<!-- HERO -->
-<section class="hero" id="heroInicio">
-    <div class="hero-overlay"></div>
+<!-- Flores globales: reemplaza estos archivos por tus imágenes 2.png (izquierda) y 3.png (derecha) -->
+<img src="assets/2.png" alt="" class="frame-decor left">
+<img src="assets/3.png" alt="" class="frame-decor right">
 
-    <div class="floating-petal petal-1">✿</div>
-    <div class="floating-petal petal-2">❀</div>
-    <div class="floating-petal petal-3">✿</div>
-    <div class="floating-petal petal-4">❀</div>
-
-    <div class="hero-content">
-        <p class="eyebrow">CON MUCHO AMOR</p>
-        <h1 class="names">Anderson <span>&</span> Esmeralda</h1>
-        <p class="hero-message">¡Nos casamos!</p>
-        <div class="hero-line"></div>
-        <p class="hero-date">7 de diciembre de 2026</p>
-        <p class="hero-location">Tuluá · Valle del Cauca</p>
-        <a href="#countdown" class="scroll-button">Descubrir nuestra historia ↓</a>
-    </div>
-</section>
-
-<!-- CONTROL DE MÚSICA LOCAL (solo aparece si esta página se abre suelta, sin el maestro) -->
-<button id="musicButton" class="music-button hidden" aria-label="Activar música">🔇</button>
+<!-- Música global: nunca se reinicia porque vive en el maestro, no en el iframe -->
 <audio id="weddingMusic" loop preload="auto">
     <source src="assets/1.mp3" type="audio/mpeg">
 </audio>
 
-<!-- HISTORIA -->
-<section class="story section reveal">
-    <div class="section-decoration">❦</div>
-    <p class="eyebrow">NUESTRA HISTORIA</p>
-    <h2>Dos caminos,<br>un mismo destino</h2>
-    <div class="gold-line"></div>
-    <p class="story-text">Hay momentos que cambian nuestra vida para siempre. Personas que llegan inesperadamente y terminan convirtiéndose en nuestro hogar.</p>
-    <p class="story-text">Hoy queremos celebrar nuestro amor junto a las personas que han formado parte de nuestra historia.</p>
-    <div class="story-photo">
-        <img src="assets/pareja.jpg" alt="Anderson y Esmeralda">
-        <div class="photo-frame"></div>
-    </div>
-</section>
+<button id="musicButton" class="music-button" aria-label="Activar música">🔇</button>
 
-<!-- CUENTA REGRESIVA -->
-<section id="countdown" class="countdown-section section reveal">
-    <p class="eyebrow">FALTA MUY POCO</p>
-    <h2>Nuestro gran día</h2>
-    <div class="gold-line"></div>
-    <div class="countdown">
-        <div class="time-box"><span id="days">00</span><small>Días</small></div>
-        <div class="time-separator">:</div>
-        <div class="time-box"><span id="hours">00</span><small>Horas</small></div>
-        <div class="time-separator">:</div>
-        <div class="time-box"><span id="minutes">00</span><small>Minutos</small></div>
-        <div class="time-separator">:</div>
-        <div class="time-box"><span id="seconds">00</span><small>Segundos</small></div>
-    </div>
-</section>
+<div class="frame-stage">
+    <iframe id="channel" src="inicio.html" title="Anderson & Esmeralda"></iframe>
+</div>
 
-<!-- DETALLES -->
-<section class="details section reveal">
-    <p class="eyebrow">AGENDA</p>
-    <h2>Acompáñanos</h2>
-    <div class="gold-line"></div>
+<script>
+/* =====================================================
+   "TELEVISOR": cambia de canal sin apagar música ni flores
+===================================================== */
+const channel = document.getElementById("channel");
+const loader = document.getElementById("frameLoader");
+const music = document.getElementById("weddingMusic");
+const musicButton = document.getElementById("musicButton");
+let musicPlaying = false;
 
-    <div class="event-grid">
-        <article class="event-card">
-            <div class="event-icon">♡</div>
-            <p class="event-type">CEREMONIA</p>
-            <h3>La Ceremonia</h3>
-            <div class="event-info">
-                <p><strong>5:00 PM</strong></p>
-                <p>Parroquia La Sagrada Familia</p>
-                <p>Barrio Alvernia</p>
-                <p>Tuluá, Valle del Cauca</p>
-            </div>
-            <iframe class="map-embed" src="https://maps.google.com/maps?cid=17780902812501791559&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
-            <a href="https://maps.google.com/?cid=17780902812501791559" target="_blank" rel="noopener noreferrer" class="map-button">📍 Ver ubicación</a>
-        </article>
+function iniciarMusica() {
+    music.volume = 0.35;
+    music.play()
+        .then(() => { musicPlaying = true; musicButton.textContent = "🔊"; })
+        .catch(() => { musicPlaying = false; musicButton.textContent = "🔇"; });
+}
 
-        <article class="event-card">
-            <div class="event-icon">♡</div>
-            <p class="event-type">RECEPCIÓN</p>
-            <h3>La Recepción</h3>
-            <div class="event-info">
-                <p><strong>8:00 PM</strong></p>
-                <p>Finca Villa Alana</p>
-                <p>Farfán, Palomestizo<br>Tuluá, Valle del Cauca</p>
-            </div>
-            <iframe class="map-embed" src="https://maps.google.com/maps?cid=12772945322594579210&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
-            <a href="https://maps.google.com/?cid=12772945322594579210" target="_blank" rel="noopener noreferrer" class="map-button">📍 Ver ubicación</a>
-        </article>
-    </div>
-</section>
+musicButton.addEventListener("click", () => {
+    if (musicPlaying) {
+        music.pause();
+        musicPlaying = false;
+        musicButton.textContent = "🔇";
+    } else {
+        music.play().then(() => { musicPlaying = true; musicButton.textContent = "🔊"; });
+    }
+});
 
-<!-- DRESS CODE -->
-<section class="dress-code section reveal">
-    <div class="dress-inner">
-        <div class="section-decoration">❦</div>
-        <p class="eyebrow">UN PEQUEÑO DETALLE</p>
-        <h2>Código de vestimenta</h2>
-        <div class="gold-line"></div>
-        <div class="dress-icon">♧</div>
-        <h3>Elegante</h3>
-        <p>Queremos verte celebrar con nosotros luciendo tu mejor versión.</p>
-    </div>
-</section>
+// Oculta el loader la primera vez que el iframe carga contenido
+channel.addEventListener("load", () => {
+    loader.classList.add("hide");
+});
 
-<!-- FOTOS -->
-<section class="photo-invitation section reveal">
-    <div class="photo-card">
-        <div class="photo-card-decoration">✿</div>
-        <p class="eyebrow">NUESTROS RECUERDOS</p>
-        <h2>Tú también haces parte de nuestra historia</h2>
-        <div class="gold-line"></div>
-        <p>Durante la celebración podrás compartir las fotografías que tomes con nosotros.</p>
-        <button class="main-button" onclick="irA('fotos.html')">📸 Compartir fotos</button>
-    </div>
-</section>
+// Escucha mensajes de las páginas hijas (nav.js) para cambiar de canal
+// o reaccionar a eventos (ej: iniciar música cuando el sobre se abre)
+window.addEventListener("message", (event) => {
+    const msg = event.data;
+    if (!msg || typeof msg !== "object") return;
 
-<!-- RSVP -->
-<section class="rsvp section reveal">
-    <div class="rsvp-content">
-        <div class="heart">♥</div>
-        <p class="eyebrow">CONFIRMA TU ASISTENCIA</p>
-        <h2>¿Nos acompañas?</h2>
-        <div class="gold-line"></div>
-        <p>Por favor confirma tu asistencia antes del <strong>15 de octubre de 2026</strong>.</p>
-        <button class="main-button" onclick="irA('buscar.html')">💌 Buscar mi invitación y confirmar</button>
-    </div>
-</section>
+    if (msg.tipo === "boda:nav" && msg.pagina) {
+        channel.src = msg.pagina;
+    }
 
-<!-- COMPARTIR -->
-<section class="share-section">
-    <h2>Comparte nuestra invitación</h2>
-    <p>Ayúdanos a hacer llegar este pequeño pedacito de nuestra historia.</p>
-    <button id="shareButton" class="share-button">🔗 Compartir invitación</button>
-</section>
-
-<footer>
-    <div class="footer-flower">❦</div>
-    <p>Con mucho amor,</p>
-    <h2>Anderson & Esmeralda</h2>
-    <p class="footer-date">7 · 12 · 2026</p>
-</footer>
-
-</main>
-
-<script src="assets/nav.js"></script>
-<script src="assets/script.js"></script>
+    if (msg.tipo === "boda:evento") {
+        if (msg.evento === "iniciarMusica") iniciarMusica();
+        if (msg.evento === "ocultarFlores") document.querySelectorAll(".frame-decor").forEach(d => d.style.opacity = "0");
+        if (msg.evento === "mostrarFlores") document.querySelectorAll(".frame-decor").forEach(d => d.style.opacity = "");
+    }
+});
+</script>
 
 </body>
 </html>

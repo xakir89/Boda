@@ -34,7 +34,7 @@ function iniciarSecuencia() {
     // 3) Cuando termina la animación del sobre, navega a la búsqueda
     setTimeout(() => {
         welcomeScreen.classList.add("hide");
-        irA("buscar.html");
+        irA("contenido.html");
     }, TIEMPO_ANTES_DE_ABRIR + TIEMPO_ANIMACION_SOBRE);
 }
 
