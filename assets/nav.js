@@ -56,32 +56,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
     revealElements.forEach(el => observer.observe(el));
 });
-
 /* =====================================================
    PÉTALOS FLOTANTES (generador reutilizable)
    Uso: crearPetalos(document.querySelector('.mi-seccion'), 10)
 ===================================================== */
-function crearPetalos(contenedor, cantidad = 8, simbolos = ["✿", "❀", "❁"]) {
+function crearPetalos(contenedor, cantidad = 8, simbolos = ['assets/4.png', 'assets/5.png', 'assets/6.png']) {
     if (!contenedor) return;
     const capa = document.createElement("div");
     capa.className = "petal-layer";
     capa.setAttribute("aria-hidden", "true");
 
     for (let i = 0; i < cantidad; i++) {
-        const petalo = document.createElement("span");
+        const petalo = document.createElement("div");
         petalo.className = "drift-petal";
-        petalo.textContent = simbolos[Math.floor(Math.random() * simbolos.length)];
+
+        // Crear el elemento de imagen <img> en vez de texto plano
+        const img = document.createElement("img");
+        img.src = simbolos[Math.floor(Math.random() * simbolos.length)];
+        img.alt = "Pétalo";
+        petalo.appendChild(img);
 
         const izquierda = Math.random() * 100;
         const duracion = 9 + Math.random() * 10;
         const demora = Math.random() * 10;
-        const tamano = 0.9 + Math.random() * 1.3;
         const giroFinal = (Math.random() > 0.5 ? 1 : -1) * (180 + Math.random() * 180);
 
         petalo.style.left = izquierda + "vw";
         petalo.style.animationDuration = duracion + "s";
         petalo.style.animationDelay = demora + "s";
-        petalo.style.fontSize = tamano + "rem";
         petalo.style.setProperty("--giro-final", giroFinal + "deg");
 
         capa.appendChild(petalo);

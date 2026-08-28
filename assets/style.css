@@ -3,7 +3,6 @@
 ===================================================== */
 
 :root {
-
     --green-dark: #435745;
     --green: #748b73;
     --green-light: #aebdaa;
@@ -22,9 +21,7 @@
         0 15px 40px rgba(54, 72, 55, 0.12);
 
     --radius: 22px;
-
 }
-
 
 /* =====================================================
    RESET
@@ -36,16 +33,12 @@
     box-sizing: border-box;
 }
 
-
 html {
     scroll-behavior: smooth;
 }
 
-
 body {
-
     font-family: 'Lato', sans-serif;
-
     background:
         radial-gradient(
             circle at top left,
@@ -57,278 +50,159 @@ body {
     color: var(--text);
 
     overflow-x: hidden;
-
 }
-
-
 img {
     max-width: 100%;
     display: block;
 }
-
-
 button,
 a {
     -webkit-tap-highlight-color: transparent;
 }
 
-
 /* =====================================================
    TIPOGRAFÍA
 ===================================================== */
-
 h1,
 h2,
 h3 {
     font-family: 'Cormorant Garamond', serif;
 }
-
-
 .names,
 .welcome-content h1 {
-
     font-family: 'Alex Brush', cursive;
-
 }
-
-
 h2 {
     font-size: clamp(2.4rem, 5vw, 4rem);
     font-weight: 500;
 }
-
-
 p {
     line-height: 1.8;
 }
 
-
 /* =====================================================
    UTILIDADES
 ===================================================== */
-
 .hidden {
     display: none;
 }
-
-
 .section {
     padding: 110px 20px;
     position: relative;
 }
-
-
 .eyebrow {
-
     font-size: 0.75rem;
-
     letter-spacing: 4px;
-
     text-transform: uppercase;
-
     color: var(--gold);
-
     font-weight: 700;
-
 }
-
-
 .gold-line {
-
     width: 70px;
     height: 2px;
-
     background: var(--gold);
-
     margin: 22px auto 35px;
-
 }
 
-
 .section-decoration {
-
     color: var(--gold);
-
     font-size: 2rem;
-
     margin-bottom: 15px;
 
 }
 
-
 /* =====================================================
    PANTALLA DE BIENVENIDA
 ===================================================== */
-
 .welcome-screen {
-
     position: fixed;
-
     inset: 0;
-
     z-index: 9999;
-
     display: flex;
-
     justify-content: center;
-
     align-items: center;
-
     text-align: center;
-
     background:
-
         radial-gradient(
             circle at center,
             rgba(255,255,255,0.95),
             rgba(223,231,220,0.98)
         );
-
     transition:
         opacity 1s ease,
         visibility 1s ease;
-
 }
-
-
 .welcome-screen.hide {
-
     opacity: 0;
-
     visibility: hidden;
-
 }
-
-
 .welcome-content {
-
     width: min(90%, 600px);
-
     padding: 40px 20px;
-
 }
-
-
 .small-title {
-
     font-size: 0.75rem;
-
     letter-spacing: 4px;
-
     color: var(--gold);
-
 }
-
-
 .welcome-content h1 {
-
     font-size: clamp(4rem, 12vw, 8rem);
-
     line-height: 0.9;
-
     color: var(--green-dark);
-
     margin: 25px 0;
-
 }
-
-
 .welcome-content h1 span {
-
     display: block;
-
     font-size: 0.55em;
-
     color: var(--gold);
-
 }
-
-
 .welcome-content p {
-
     max-width: 450px;
-
     margin: auto;
-
 }
-
-
 .welcome-decoration {
-
     position: absolute;
-
     font-size: 8rem;
-
     opacity: 0.15;
-
 }
-
-
 .welcome-left {
-
     left: -30px;
     bottom: 30px;
-
     transform: rotate(-30deg);
-
 }
-
-
 .welcome-right {
-
     right: -30px;
     top: 30px;
-
     transform: rotate(30deg);
-
 }
-
 
 /* =====================================================
    BOTÓN PRINCIPAL
 ===================================================== */
-
 .main-button {
-
     display: inline-flex;
-
     align-items: center;
-
     justify-content: center;
-
     gap: 10px;
-
     margin-top: 30px;
-
     padding: 15px 30px;
-
     border: none;
-
     border-radius: 50px;
-
     background: var(--green-dark);
-
     color: white;
-
     text-decoration: none;
-
     font-weight: 700;
-
     cursor: pointer;
-
     transition:
         transform 0.3s ease,
         box-shadow 0.3s ease,
         background 0.3s ease;
-
 }
-
 .main-button:hover {
     transform: translateY(-4px);
     background: var(--green);
     box-shadow:
         0 10px 25px rgba(67,87,69,0.25);
-
 }
 .floating-petal img {
     width: 100%;
@@ -336,11 +210,9 @@ p {
     object-fit: contain;
     pointer-events: none;
 }
-
 /* =====================================================
    HERO
 ===================================================== */
-
 .hero {
     min-height: 100svh;
     position: relative;
@@ -350,236 +222,132 @@ p {
     text-align: center;
     overflow: hidden;
     color: white;
-
     background:
-
         linear-gradient(
             rgba(50, 68, 51, 0.38),
             rgba(50, 68, 51, 0.58)
         ),
-
         url("fondo-boda.jpg")
         center / cover no-repeat;
-
 }
-
-
 .hero::before {
-
     content: "";
-
     position: absolute;
-
     inset: 20px;
-
     border: 1px solid rgba(255,255,255,0.45);
-
     pointer-events: none;
-
 }
-
-
 .hero-overlay {
-
     position: absolute;
-
     inset: 0;
-
     background:
         radial-gradient(
             circle,
             transparent 25%,
             rgba(20,40,20,0.3)
         );
-
 }
-
-
 .hero-content {
-
     position: relative;
-
     z-index: 2;
-
     width: min(95%, 900px);
-
     padding: 40px 20px;
-
 }
-
-
 .hero .eyebrow {
-
     color: var(--gold-light);
-
 }
-
-
 .names {
-
     font-size: clamp(4.5rem, 13vw, 9rem);
-
     line-height: 0.9;
-
     font-weight: normal;
-
     margin: 25px 0;
-
     text-shadow:
         0 5px 20px rgba(0,0,0,0.25);
-
 }
-
-
 .names span {
-
     display: block;
-
     font-size: 0.5em;
-
     color: var(--gold-light);
-
 }
-
-
 .hero-message {
-
     font-family:
         'Cormorant Garamond',
         serif;
-
     font-size: clamp(1.5rem, 4vw, 2.2rem);
-
     font-style: italic;
-
 }
-
-
 .hero-line {
-
     width: 80px;
-
     height: 1px;
-
     background: var(--gold-light);
-
     margin: 20px auto;
-
 }
-
-
 .hero-date {
-
     font-family:
         'Cormorant Garamond',
         serif;
-
     font-size: 1.7rem;
-
 }
-
-
 .hero-location {
-
     margin-top: 5px;
-
     letter-spacing: 2px;
-
 }
-
-
 .scroll-button {
-
     display: inline-block;
-
     margin-top: 35px;
-
     padding: 12px 22px;
-
     color: white;
-
     background: transparent;
-
     border: 1px solid rgba(255,255,255,0.6);
-
     border-radius: 50px;
-
     text-decoration: none;
-
     cursor: pointer;
-
     font: inherit;
-
     transition: 0.3s;
-
 }
-
-
 .scroll-button:hover {
-
     background: rgba(255,255,255,0.15);
-
 }
-
-
 /* =====================================================
    PÉTALOS
 ===================================================== */
-
 .floating-petal {
-
     position: absolute;
-
-    color: rgba(255,255,255,0.45);
-
-    animation:
-        floatPetal 7s ease-in-out infinite;
-
+    width: 70px;  /* Ajusta este valor si deseas las flores más grandes o pequeñas */
+    height: 70px;
+    animation: floatPetal 7s ease-in-out infinite;    
 }
-
-
 .petal-1 {
     top: 15%;
     left: 10%;
 }
-
-
 .petal-2 {
     top: 30%;
     right: 15%;
     animation-delay: 2s;
 }
-
-
 .petal-3 {
     bottom: 15%;
     left: 18%;
     animation-delay: 4s;
 }
-
-
 .petal-4 {
     bottom: 25%;
     right: 10%;
     animation-delay: 1s;
 }
-
-
 @keyframes floatPetal {
-
     0%,
     100% {
         transform:
             translateY(0)
             rotate(0deg);
     }
-
     50% {
         transform:
             translateY(-25px)
             rotate(15deg);
     }
-
 }
 
 
@@ -588,242 +356,129 @@ p {
 ===================================================== */
 
 .music-button {
-
     position: fixed;
-
     right: 20px;
     bottom: 20px;
-
     z-index: 100;
-
     width: 52px;
     height: 52px;
-
     border-radius: 50%;
-
     border: 1px solid var(--gold);
-
     background:
         rgba(255,255,255,0.9);
-
     box-shadow: var(--shadow);
-
     cursor: pointer;
-
     font-size: 1.2rem;
-
 }
-
 
 /* =====================================================
    HISTORIA
 ===================================================== */
-
 .story {
-
     text-align: center;
-
     max-width: 1000px;
-
     margin: auto;
-
 }
-
-
 .story-text {
-
     max-width: 700px;
-
     margin: 0 auto 20px;
-
 }
-
-
 .story-photo {
-
     position: relative;
-
     width: min(90%, 500px);
-
     margin: 50px auto 0;
-
 }
-
-
 .story-photo img {
-
     width: 100%;
-
     aspect-ratio: 4 / 5;
-
     object-fit: cover;
-
     border-radius: 200px 200px 20px 20px;
-
     box-shadow: var(--shadow);
-
 }
-
-
 .photo-frame {
-
     position: absolute;
-
     inset: 12px;
-
     border: 1px solid var(--gold);
-
     border-radius: 190px 190px 15px 15px;
-
     pointer-events: none;
-
 }
-
 
 /* =====================================================
    CUENTA REGRESIVA
 ===================================================== */
-
 .countdown-section {
-
     background:
         linear-gradient(
             135deg,
             var(--green-dark),
             var(--green)
         );
-
     color: white;
-
     text-align: center;
-
 }
-
-
 .countdown-section .eyebrow {
     color: var(--gold-light);
 }
-
-
 .countdown {
-
     display: flex;
-
     justify-content: center;
-
     align-items: center;
-
     gap: clamp(8px, 3vw, 30px);
-
     margin-top: 40px;
-
 }
-
 
 .time-box {
-
     min-width: 90px;
-
 }
-
-
 .time-box span {
-
     display: block;
-
     font-family:
         'Cormorant Garamond',
         serif;
-
     font-size: clamp(2.5rem, 8vw, 5rem);
-
     line-height: 1;
-
 }
-
-
 .time-box small {
-
     display: block;
-
     margin-top: 10px;
-
     text-transform: uppercase;
-
     letter-spacing: 2px;
-
     font-size: 0.65rem;
-
 }
-
-
 .time-separator {
-
     font-size: 2rem;
-
     color: var(--gold-light);
-
 }
-
-
 /* =====================================================
    EVENTOS
 ===================================================== */
-
 .details {
-
     text-align: center;
-
     background: var(--cream);
-
 }
-
-
 .event-grid {
-
     max-width: 1100px;
-
     margin: 50px auto 0;
-
     display: grid;
-
     grid-template-columns:
         repeat(2, minmax(0, 1fr));
-
     gap: 35px;
-
 }
-
-
 .event-card {
-
     background: white;
-
     padding: 40px;
-
     border-radius: var(--radius);
-
     box-shadow: var(--shadow);
-
     position: relative;
-
     overflow: hidden;
-
 }
-
-
 .event-card::before {
-
     content: "";
-
     position: absolute;
-
     top: 0;
     left: 0;
     right: 0;
-
     height: 5px;
-
     background:
         linear-gradient(
             90deg,
@@ -831,435 +486,225 @@ p {
             var(--gold),
             var(--green)
         );
-
 }
 
 
 .event-icon {
-
     width: 60px;
     height: 60px;
-
     display: grid;
-
     place-items: center;
-
     margin: auto;
-
     border-radius: 50%;
-
     background: var(--green-soft);
-
     color: var(--green-dark);
-
     font-size: 1.5rem;
-
 }
-
-
 .event-type {
-
     margin-top: 20px;
-
     font-size: 0.7rem;
-
     letter-spacing: 3px;
-
     color: var(--gold);
-
 }
-
-
 .event-card h3 {
-
     font-size: 2.5rem;
-
     margin: 10px 0 20px;
-
 }
-
-
 .event-info p {
-
     margin: 7px 0;
-
 }
-
 
 /* =====================================================
    MAPA DE GOOGLE MAPS (IFRAME)
 ===================================================== */
-
 .map-embed {
-
     /* Iframe real de Google Maps, responsivo */
-
     width: 100%;
-
     height: 210px;
-
     margin: 30px 0 20px;
-
     border: none;
-
     border-radius: 15px;
-
     display: block;
-
 }
-
-
 .map-button {
-
     display: inline-block;
-
     padding: 11px 22px;
-
     border: 1px solid var(--green);
-
     color: var(--green-dark);
-
     border-radius: 30px;
-
     text-decoration: none;
-
     font-weight: 700;
-
     transition: 0.3s;
-
 }
-
-
 .map-button:hover {
-
     background: var(--green-dark);
-
     color: white;
-
 }
-
-
 /* =====================================================
    DRESS CODE
 ===================================================== */
-
 .dress-code {
-
     text-align: center;
-
     background:
-
         linear-gradient(
             rgba(223,231,220,0.9),
             rgba(223,231,220,0.9)
         );
-
 }
-
-
 .dress-inner {
-
     max-width: 700px;
-
     margin: auto;
-
 }
-
-
 .dress-icon {
-
     font-size: 3rem;
-
     color: var(--gold);
-
     margin: 20px;
-
 }
-
-
 .dress-inner h3 {
-
     font-size: 2.5rem;
-
 }
-
 
 /* =====================================================
    FOTO INVITACIÓN
 ===================================================== */
-
 .photo-invitation {
-
     background:
         radial-gradient(
             circle at center,
             white,
             var(--cream)
         );
-
     text-align: center;
-
 }
-
-
 .photo-card {
-
     max-width: 800px;
-
     margin: auto;
-
     padding: 70px 30px;
-
     background: white;
-
     border-radius: 30px;
-
     box-shadow: var(--shadow);
-
     position: relative;
-
     overflow: hidden;
-
 }
-
-
 .photo-card::before,
 .photo-card::after {
-
     content: "✿";
-
     position: absolute;
-
     color: var(--green-light);
-
     font-size: 7rem;
-
     opacity: 0.3;
-
 }
-
-
 .photo-card::before {
-
     left: -30px;
     top: -20px;
-
 }
-
-
 .photo-card::after {
-
     right: -30px;
     bottom: -20px;
-
 }
-
-
 .photo-card h2 {
-
     max-width: 650px;
-
     margin: auto;
-
 }
-
-
 /* =====================================================
    RSVP
 ===================================================== */
-
 .rsvp {
-
     background:
         linear-gradient(
             135deg,
             #354735,
             #566c55
         );
-
     color: white;
-
     text-align: center;
-
 }
-
-
 .rsvp-content {
-
     max-width: 700px;
-
     margin: auto;
-
 }
-
-
 .rsvp .eyebrow {
-
     color: var(--gold-light);
-
 }
-
-
 .heart {
-
     color: var(--gold-light);
-
     font-size: 2rem;
-
     margin-bottom: 15px;
-
 }
-
-
 .whatsapp-button {
-
     display: inline-flex;
-
     align-items: center;
-
     gap: 10px;
-
     margin-top: 30px;
-
     padding: 16px 28px;
-
     background: #25D366;
-
     color: white;
-
     border-radius: 50px;
-
     text-decoration: none;
-
     font-weight: 700;
-
     transition: 0.3s;
-
 }
-
-
 .whatsapp-button:hover {
-
     transform: translateY(-3px);
-
     box-shadow:
         0 10px 25px
         rgba(0,0,0,0.25);
-
 }
-
-
 /* =====================================================
    COMPARTIR
 ===================================================== */
-
 .share-section {
-
     text-align: center;
-
     padding: 70px 20px;
-
 }
-
-
 .share-section h2 {
-
     font-size: 2.3rem;
-
 }
-
-
 .share-button {
-
     margin-top: 25px;
-
     border: 1px solid var(--green);
-
     background: transparent;
-
     color: var(--green-dark);
-
     border-radius: 50px;
-
     padding: 13px 25px;
-
     cursor: pointer;
-
     font-weight: 700;
-
 }
-
-
 /* =====================================================
    FOOTER
 ===================================================== */
-
 footer {
-
     text-align: center;
-
     padding: 70px 20px;
-
     background: var(--cream-dark);
-
 }
-
-
 .footer-flower {
-
     font-size: 2rem;
-
     color: var(--gold);
-
 }
-
-
 footer h2 {
-
     font-family: 'Alex Brush', cursive;
-
     font-size: 4rem;
-
     color: var(--green-dark);
-
 }
-
-
 .footer-date {
-
     letter-spacing: 4px;
-
     color: var(--gold);
-
 }
-
-
 /* =====================================================
    ANIMACIONES SCROLL
 ===================================================== */
-
 .reveal {
-
     opacity: 0;
-
     transform: translateY(40px);
-
     transition:
         opacity 1s ease,
         transform 1s ease;
-
 }
-
-
 .reveal.visible {
-
     opacity: 1;
-
     transform: translateY(0);
-
 }
-
-
 /* =====================================================
    ANIMACIÓN DEL SOBRE (TRANSICIÓN INTERACTIVA)
 ===================================================== */
@@ -1366,13 +811,11 @@ footer h2 {
     animation: pulseStamp 2s infinite; 
     transition: transform 0.4s ease, opacity 0.4s ease;
 }
-
 @keyframes pulseStamp {
     0% { box-shadow: 0 0 0 0 rgba(184, 154, 93, 0.7); }
     70% { box-shadow: 0 0 0 15px rgba(184, 154, 93, 0); }
     100% { box-shadow: 0 0 0 0 rgba(184, 154, 93, 0); }
 }
-
 /* Texto de pista */
 .envelope-hint {
     margin-top: 40px;
@@ -1383,192 +826,106 @@ footer h2 {
     opacity: 0;
     transition: opacity 0.5s ease;
 }
-
 .envelope-container.active .envelope-hint { opacity: 1; transition-delay: 0.6s; }
 .envelope-container.opening .envelope-hint { opacity: 0; }
-
 /* ====================================
    LA MAGIA (CLASES DINÁMICAS) 
 ==================================== */
-
 /* 1. El sello estalla ligeramente y desaparece */
 .envelope.animate .envelope-stamp {
     opacity: 0;
     transform: translate(-50%, -50%) scale(1.5);
 }
-
 /* 2. La solapa rota hacia atrás en 3D */
 .envelope.animate .envelope-flap {
     transform: rotateX(180deg);
     z-index: 1; /* Se esconde atrás para dejar salir la carta */
 }
-
 /* 3. La carta se asoma hacia arriba */
 .envelope.animate .envelope-letter {
     transform: translateY(-50px);
 }
-
 /* 4. Todo el sobre hace zoom hacia la pantalla */
 .envelope.animate {
     animation: zoomEnvelope 1.2s forwards cubic-bezier(0.5, 0, 0.2, 1) 1.8s; /* Inicia a los 1.8s */
 }
-
 @keyframes zoomEnvelope {
     0% { transform: translateY(-5px) scale(1); opacity: 1; }
     100% { transform: translateY(-5px) scale(6); opacity: 0; }
 }
-
-
 /* =====================================================
    TABLET
 ===================================================== */
-
 @media (max-width: 800px) {
-
     .event-grid {
-
         grid-template-columns: 1fr;
-
         max-width: 600px;
-
     }
-
 }
-
-
 /* =====================================================
    CELULARES
 ===================================================== */
-
 @media (max-width: 600px) {
-
     .section {
-
         padding: 80px 18px;
-
     }
-
-
     .hero::before {
-
         inset: 10px;
-
     }
-
-
     .names {
-
         font-size: clamp(4rem, 20vw, 6rem);
-
     }
-
-
     .hero-date {
-
         font-size: 1.4rem;
-
     }
-
-
     .countdown {
-
         gap: 4px;
-
     }
-
-
     .time-box {
-
         min-width: 62px;
-
     }
-
-
     .time-box span {
-
         font-size: 2.3rem;
-
     }
-
-
     .time-box small {
-
         font-size: 0.52rem;
-
         letter-spacing: 1px;
-
     }
-
-
     .time-separator {
-
         font-size: 1.3rem;
-
     }
-
-
     .event-card {
-
         padding: 30px 20px;
-
     }
-
-
     .event-card h3 {
-
         font-size: 2.2rem;
-
     }
-
-
     .map-embed {
-
         height: 180px;
-
     }
-
-
     .welcome-content h1 {
-
         font-size: 5rem;
-
     }
-
-
     footer h2 {
-
         font-size: 3.2rem;
-
     }
-
 }
-
-
 /* =====================================================
    REDUCIR MOVIMIENTO
 ===================================================== */
-
 @media (prefers-reduced-motion: reduce) {
-
     *,
     *::before,
     *::after {
-
         animation-duration: 0.01ms !important;
-
         animation-iteration-count: 1 !important;
-
         scroll-behavior: auto !important;
-
         transition-duration: 0.01ms !important;
-
     }
-
 }
 /* =====================================================
    ESTILOS EXCLUSIVOS PARA FOTOS.HTML
 ===================================================== */
-
 /* Campo de nombre */
 .input-name {
     width: 100%;
@@ -1584,11 +941,9 @@ footer h2 {
     outline: none;
     transition: border-color 0.3s;
 }
-
 .input-name:focus {
     border-color: var(--green-dark);
 }
-
 /* Grid Responsivo de la Galería */
 .gallery-grid {
     display: grid;
@@ -1598,7 +953,6 @@ footer h2 {
     margin: 50px auto 0;
     padding: 0 20px;
 }
-
 /* Tarjeta de foto individual */
 .photo-card-item {
     background: white;
@@ -1611,18 +965,15 @@ footer h2 {
     gap: 15px;
     transition: transform 0.3s ease;
 }
-
 .photo-card-item:hover {
     transform: translateY(-5px);
 }
-
 .photo-card-item img {
     width: 100%;
     height: 300px;
     object-fit: cover;
     border-radius: 12px;
 }
-
 .photo-author {
     font-size: 1.1rem;
     color: var(--green-dark);
@@ -1642,16 +993,21 @@ footer h2 {
     pointer-events: none;
     z-index: 1;
 }
-
 .drift-petal {
     position: absolute;
     top: -10%;
-    color: rgba(255, 255, 255, 0.55);
+    width: 30px;  /* Ancho de los pétalos al caer */
+    height: 30px; /* Alto de los pétalos al caer */
+    pointer-events: none;
     animation-name: driftDown;
     animation-timing-function: ease-in-out;
     animation-iteration-count: infinite;
 }
-
+.drift-petal img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
 /* Variante para usar sobre fondos claros (fuera del hero) */
 .section .drift-petal,
 .dress-code .drift-petal {
@@ -1681,24 +1037,20 @@ footer h2 {
         linear-gradient(rgba(50, 68, 51, 0.55), rgba(50, 68, 51, 0.72)),
         url("fondo-boda.jpg") center / cover no-repeat;
 }
-
 .search-form {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 20px;
 }
-
 .input-name--dark {
     background: rgba(255, 255, 255, 0.94);
 }
-
 .search-status {
     margin-top: 20px;
     font-weight: 700;
     min-height: 1.4em;
 }
-
 .results-list {
     display: flex;
     flex-direction: column;
@@ -1706,7 +1058,6 @@ footer h2 {
     margin-top: 15px;
     width: 100%;
 }
-
 .result-item {
     display: flex;
     flex-direction: column;
@@ -1722,24 +1073,20 @@ footer h2 {
     color: var(--text);
     transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
-
 .result-item strong {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.3rem;
     color: var(--green-dark);
 }
-
 .result-item span {
     font-size: 0.8rem;
     color: var(--gold);
     letter-spacing: 1px;
 }
-
 .result-item:hover {
     transform: translateY(-3px);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
-
 /* =====================================================
    TARJETA DE INVITACIÓN PERSONALIZADA (invitacion.html)
 ===================================================== */
@@ -1754,7 +1101,6 @@ footer h2 {
     text-align: center;
     isolation: isolate; /* asegura que la decoración quede anclada a esta tarjeta */
 }
-
 .invite-card-decoration {
     position: absolute;
     top: -20px;
@@ -1763,12 +1109,10 @@ footer h2 {
     color: var(--green-soft);
     z-index: 0;
 }
-
 .invite-card > * {
     position: relative;
     z-index: 1;
 }
-
 .invite-names {
     font-family: 'Alex Brush', cursive;
     font-size: clamp(2.2rem, 8vw, 3.4rem);
@@ -1776,7 +1120,6 @@ footer h2 {
     line-height: 1.15;
     margin-top: 10px;
 }
-
 .invite-sub {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
@@ -1784,18 +1127,15 @@ footer h2 {
     color: var(--gold);
     margin-top: -6px;
 }
-
 .invite-detalle p {
     font-size: 1.15rem;
     margin: 6px 0;
 }
-
 .invite-detalle strong {
     color: var(--green-dark);
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.4rem;
 }
-
 .invite-fecha {
     margin-top: 18px;
     font-size: 0.85rem;
@@ -1803,7 +1143,6 @@ footer h2 {
     color: var(--gold);
     text-transform: uppercase;
 }
-
 .rsvp-inline-buttons {
     display: flex;
     flex-wrap: wrap;
@@ -1811,18 +1150,15 @@ footer h2 {
     gap: 14px;
     margin-top: 30px;
 }
-
 .main-button--outline {
     background: transparent;
     color: var(--green-dark);
     border: 1.5px solid var(--green-dark);
 }
-
 .main-button--outline:hover {
     background: var(--green-dark);
     color: white;
 }
-
 .invite-confirmado {
     margin-top: 25px;
     font-family: 'Cormorant Garamond', serif;
@@ -1848,12 +1184,10 @@ footer h2 {
     transition: opacity 0.35s ease, visibility 0.35s ease;
     padding: 30px 20px;
 }
-
 .lightbox.active {
     opacity: 1;
     visibility: visible;
 }
-
 .lightbox img {
     max-width: min(92vw, 900px);
     max-height: 70svh;
@@ -1861,7 +1195,6 @@ footer h2 {
     border-radius: 10px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
 }
-
 .lightbox-close {
     position: absolute;
     top: 18px;
@@ -1876,7 +1209,6 @@ footer h2 {
     cursor: pointer;
     z-index: 2;
 }
-
 .lightbox-arrow {
     position: absolute;
     top: 50%;
@@ -1892,10 +1224,8 @@ footer h2 {
     display: grid;
     place-items: center;
 }
-
 .lightbox-prev { left: 14px; }
 .lightbox-next { right: 14px; }
-
 .lightbox-footer {
     margin-top: 20px;
     display: flex;
@@ -1903,13 +1233,11 @@ footer h2 {
     align-items: center;
     gap: 6px;
 }
-
 .lightbox-footer p {
     color: white;
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
 }
-
 @media (max-width: 600px) {
     .lightbox-arrow { width: 40px; height: 40px; font-size: 1.4rem; }
     .lightbox-prev { left: 6px; }
