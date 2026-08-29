@@ -102,7 +102,7 @@ function pintarTarjeta(inv) {
         if (inv.confirmado === 'asistira') {
             accionesPost.classList.remove('hidden')
         } else {
-            setTimeout(() => irA('index.html'), 2500)
+            setTimeout(() => irA('contenido.html'), 2500)
         }
     }
 }
@@ -135,13 +135,13 @@ async function confirmarAsistencia(asiste) {
     } else {
         mensajeConfirmado.textContent = 'Gracias por avisarnos. ¡Los extrañaremos!'
         notificarWhatsApp(`💔 ${invitadoActual.nombre_pareja} confirmó que NO podrá asistir.`)
-        setTimeout(() => irA('index.html'), 2200)
+        setTimeout(() => irA('contenido.html'), 2200)
     }
 }
 
 btnSi.addEventListener('click', () => confirmarAsistencia(true))
 btnNo.addEventListener('click', () => confirmarAsistencia(false))
-btnContinuar.addEventListener('click', () => irA('index.html'))
+btnContinuar.addEventListener('click', () => irA('contenido.html'))
 
 /* =====================================================
    DESCARGAR INVITACIÓN COMO PNG

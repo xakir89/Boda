@@ -64,12 +64,7 @@ function updateCountdown() {
 updateCountdown();
 setInterval(updateCountdown, 1000);
 
-/* =====================================================
-   PÉTALOS FLOTANTES EXTRA EN EL HERO (usa nav.js)
-===================================================== */
-document.addEventListener("DOMContentLoaded", () => {
-    crearPetalos(document.getElementById("heroInicio"), 10);
-});
+
 
 /* =====================================================
    BOTÓN COMPARTIR
