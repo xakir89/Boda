@@ -257,17 +257,17 @@ p {
     color: var(--gold-light);
 }
 .names {
-    font-size: clamp(4.5rem, 13vw, 9rem);
+    font-size: clamp(5.5rem, 16vw, 11rem); /* Tamaño más grande */
+    color: var(--white);                   /* Color blanco para Anderson y Esmeralda */
     line-height: 0.9;
     font-weight: normal;
     margin: 25px 0;
-    text-shadow:
-        0 5px 20px rgba(0,0,0,0.25);
+    text-shadow: 0 5px 20px rgba(0,0,0,0.25);
 }
 .names span {
     display: block;
     font-size: 0.5em;
-    color: var(--gold-light);
+    color: var(--gold-light);              /* Mantiene el conector '&' en dorado */
 }
 .hero-message {
     font-family:
@@ -404,7 +404,37 @@ p {
     border-radius: 190px 190px 15px 15px;
     pointer-events: none;
 }
+.names .name-block {
+    display: inline-block;
+    text-align: center;
+}
 
+.names .surname {
+    display: block;
+    font-size: 0.4em;
+    opacity: 0.7; /* Ligera transparencia */
+    font-family: 'Cormorant Garamond', serif;
+    letter-spacing: 2px;
+    margin-top: -8px;
+    font-weight: 400;
+}
+/* Contenedor individual de cada nombre con su apellido */
+.names .name-block {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center; /* Alinea el apellido a la derecha con respecto al nombre */
+    vertical-align: middle;
+}
+
+/* Estilo para los apellidos */
+.names .surname {
+    font-family: inherit; /* Conserva exactamente la misma tipografía/letra del nombre */
+    font-size: 0.45em;    /* Tamaño proporcional más pequeño que el nombre principal */
+    text-align: right;    /* Alineación de texto a la derecha */
+    opacity: 0.7;         /* Ligera transparencia (ajustable entre 0.5 y 0.8) */
+    margin-top: -12px;    /* Ajuste de margen para que quede pegado debajo del nombre */
+    font-weight: normal;  /* Mantiene el grosor suave de la tipografía */
+}
 /* =====================================================
    CUENTA REGRESIVA
 ===================================================== */
@@ -970,7 +1000,10 @@ footer h2 {
         height: 180px;
     }
     .welcome-content h1 {
-        font-size: 5rem;
+        font-size: clamp(5.5rem, 16vw, 11rem); /* Tamaño aumentado */
+        line-height: 0.9;
+        color: var(--green-dark); /* Verde oscuro */
+        margin: 25px 0;
     }
     footer h2 {
         font-size: 3.2rem;
@@ -1316,4 +1349,40 @@ footer h2 {
     pointer-events: none;
     z-index: 99;
     overflow: hidden;
+}
+/* =====================================================
+   AJUSTE DE COLORES Y TAMAÑOS EN NOMBRES Y APELLIDOS
+===================================================== */
+
+/* 1. PANTALLA DE BIENVENIDA */
+.welcome-content .name-block {
+    color: var(--green-dark) !important; /* Nombres en verde oscuro */
+    font-size: clamp(5rem, 9vw, 9rem);
+}
+.welcome-content .surname {
+    color: var(--gold) !important;       /* Apellidos en dorado */
+}
+
+/* 2. SECCIÓN PRINCIPAL HERO */
+.hero .name-block {
+    color: var(--white) !important;      /* Nombres en blanco */
+    font-size: clamp(5rem, 9vw, 9rem);
+}
+.hero .surname {
+    color: var(--gold-light) !important; /* Apellidos en dorado claro */
+}
+
+/* 3. CONECTOR '&' EN DORADO */
+.hero .names > span:not(.name-block),
+.welcome-content h1 > span:not(.name-block) {
+    color: var(--gold-light) !important;
+}
+/* =====================================================
+   ESPACIADO SIMÉTRICO EN EL CONECTOR '&'
+===================================================== */
+
+.names > span:not(.name-block),
+.welcome-content h1 > span:not(.name-block) {
+    margin-top: 15px;    /* Separa 'Lopez Ramirez' del '&' */
+    margin-bottom: 15px; /* Mantiene la misma distancia hacia 'Esmeralda' */
 }

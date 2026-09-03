@@ -16,7 +16,7 @@ const supabase = createClient(supabaseUrl, supabaseKey)
    deja de funcionar, la confirmación seguirá guardándose
    correctamente en Supabase de todas formas.
 ===================================================== */
-const WHATSAPP_NUMERO_NOVIOS = '573000000000' // <-- CAMBIAR
+const WHATSAPP_NUMERO_NOVIOS = '573106334641' // <-- CAMBIAR
 const WHATSAPP_APIKEY = 'TU_APIKEY_AQUI'       // <-- CAMBIAR
 
 async function notificarWhatsApp(texto) {
@@ -90,20 +90,70 @@ function pintarTarjeta(inv) {
     numPases.textContent = inv.pases ?? '—'
     numMesa.textContent = inv.mesa ?? '—'
 
-    if (inv.confirmado === 'asistira' || inv.confirmado === 'no_asistira') {
-        // Ya había confirmado antes: no lo dejamos volver a elegir,
-        // solo mostramos su estado y la opción de continuar / descargar.
-        rsvpBotones.classList.add('hidden')
-        mensajeConfirmado.classList.remove('hidden')
-        mensajeConfirmado.textContent = inv.confirmado === 'asistira'
-            ? '✅ Ya confirmaste tu asistencia. ¡Te esperamos!'
-            : 'Ya registramos que no podrás acompañarnos. ¡Gracias por avisarnos!'
+    // Llenar el selector de pases dinámicamente según el límite (1 hasta inv.pases)
+    const select = document.getElementById('pasesSelect')
+    select.innerHTML = ''
+    const limitePases = inv.pases || 1
+    for (let i = 1; i <= limitePases; i++) {
+        const option = document.createElement('option')
+        option.value = i
+        option.textContent = `${i} persona${i > 1 ? 's' : ''}`
+        if (i === limitePases) option.selected = true
+        select.appendChild(option)
+    }
 
+    if (inv.confirmado === 'asistira' || inv.confirmado === 'no_asistira') {
+        rsvpBotones.classList.add('hidden')
+        document.getElementById('selectorPasesContainer').classList.add('hidden')
+        mensajeConfirmado.classList.remove('hidden')
+        
         if (inv.confirmado === 'asistira') {
+            mensajeConfirmado.textContent = '✅ Ya confirmaste tu asistencia. ¡Te esperamos!'
             accionesPost.classList.remove('hidden')
         } else {
+            mensajeConfirmado.textContent = 'Ya registramos que no podrás acompañarnos. ¡Gracias por avisarnos!'
             setTimeout(() => irA('contenido.html'), 2500)
         }
+    }
+}
+
+async function confirmarAsistencia(asiste) {
+    rsvpBotones.querySelectorAll('button').forEach(b => b.disabled = true)
+    const select = document.getElementById('pasesSelect')
+    const pasesElegidos = asiste ? parseInt(select.value, 10) : 0
+
+    // Guardado directo en la base de datos sin invocar RPC
+    const { error } = await supabase
+        .from('invitados')
+        .update({
+            confirmado: asiste ? 'asistira' : 'no_asistira',
+            pases_confirmados: pasesElegidos,
+            confirmado_en: new Date().toISOString()
+        })
+        .eq('id', invitadoId)
+
+    if (error) {
+        console.error('Error guardando en Supabase:', error)
+        alert('Ocurrió un problema guardando tu confirmación. Intenta de nuevo.')
+        rsvpBotones.querySelectorAll('button').forEach(b => b.disabled = false)
+        return
+    }
+
+    rsvpBotones.classList.add('hidden')
+    document.getElementById('selectorPasesContainer').classList.add('hidden')
+    mensajeConfirmado.classList.remove('hidden')
+
+    if (asiste) {
+        // Actualizamos el número visible en la tarjeta para que la foto capturada lleve el número correcto
+        numPases.textContent = pasesElegidos
+        mensajeConfirmado.textContent = `✅ ¡Gracias por confirmar! (${pasesElegidos} pase(s)). Te esperamos.`
+        accionesPost.classList.remove('hidden')
+        notificarWhatsApp(`🎉 ${invitadoActual.nombre_pareja} confirmó SÍ asistirá con ${pasesElegidos} pases (mesa ${invitadoActual.mesa}).`)
+    } else {
+        mensajeConfirmado.textContent = '¡Gracias por confirmar! Lamentamos que no puedas acompañarnos.'
+        notificarWhatsApp(`💔 ${invitadoActual.nombre_pareja} confirmó que NO podrá asistir.`)
+        // Redirección a contenido.html
+        setTimeout(() => irA('contenido.html'), 2500)
     }
 }
 
