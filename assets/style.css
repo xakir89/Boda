@@ -1386,3 +1386,38 @@ footer h2 {
     margin-top: 15px;    /* Separa 'Lopez Ramirez' del '&' */
     margin-bottom: 15px; /* Mantiene la misma distancia hacia 'Esmeralda' */
 }
+/* Contenedor principal con fondo personalizado */
+.tarjeta-invitacion {
+    background: linear-gradient(rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.88)), 
+                url('assets/fondo.jpg') center/cover no-repeat;
+    border-radius: 24px;
+    padding: 35px 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    text-align: center;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+/* Tipografía y textos de la invitación */
+.invitacion-titulo {
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: #b89756;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.invitacion-nombres {
+    font-family: 'Great Vibes', 'Playfair Display', cursive, serif;
+    font-size: 32px;
+    color: #2d4030;
+    margin: 15px 0;
+}
+
+.invitacion-pases {
+    font-size: 16px;
+    color: #4a4a4a;
+    margin: 12px 0;
+    font-weight: 500;
+}
