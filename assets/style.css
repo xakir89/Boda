@@ -59,7 +59,6 @@ button,
 a {
     -webkit-tap-highlight-color: transparent;
 }
-
 /* =====================================================
    TIPOGRAFÍA
 ===================================================== */
@@ -79,7 +78,6 @@ h2 {
 p {
     line-height: 1.8;
 }
-
 /* =====================================================
    UTILIDADES
 ===================================================== */
@@ -103,14 +101,12 @@ p {
     background: var(--gold);
     margin: 22px auto 35px;
 }
-
 .section-decoration {
     color: var(--gold);
     font-size: 2rem;
     margin-bottom: 15px;
 
 }
-
 /* =====================================================
    PANTALLA DE BIENVENIDA
 ===================================================== */
@@ -175,7 +171,6 @@ p {
     top: 30px;
     transform: rotate(30deg);
 }
-
 /* =====================================================
    BOTÓN PRINCIPAL
 ===================================================== */
@@ -1524,4 +1519,30 @@ footer h2 {
     font-size: 0.95rem;
     margin: 3px 0;
     color: var(--text);
+}
+
+/* Florez sobre la sesion Posicionamiento para la sección contenedora */
+.hero, section {
+    position: relative;
+}
+
+/* Estilo base de las decoraciones de esquina */
+.decoracion-esquina {
+    position: absolute;
+    z-index: 10;           /* Las coloca por encima del fondo y marcos */
+    pointer-events: none;  /* Permite hacer clic a través de la imagen */
+    width: clamp(100px, 22vw, 220px); /* Tamaño responsivo adaptable */
+    height: auto;
+}
+
+/* Esquina superior izquierda (Marcado arriba) */
+.decoracion-esquina.top-left {
+    top: -15px;
+    left: -15px;
+}
+
+/* Esquina inferior derecha (Marcado abajo) */
+.decoracion-esquina.bottom-right {
+    bottom: -15px;
+    right: -15px;
 }
