@@ -15,9 +15,7 @@
 
 <main>
     <section class="hero hero-buscar" style="min-height: 100svh;">
-        <div class="hero-overlay">        
-            <button class="scroll-button" onclick="irA('contenido.html')">← Volver </button>
-        </div>
+        <div class="hero-overlay"></div>
 
         <div class="hero-content reveal">
             <p class="eyebrow">BUSCA TU NOMBRE</p>
@@ -43,6 +41,13 @@
             <p id="searchStatus" class="search-status"></p>
 
             <div id="resultsList" class="results-list"></div>
+
+            <!-- BOTÓN VOLVER (AHORA UBICADO ABAJO) -->
+            <div style="margin-top: 25px;">
+                <button class="scroll-button" onclick="irA('contenido.html')" style="position: relative; top: auto; left: auto; transform: none; display: inline-block;">
+                    ← Volver
+                </button>
+            </div>
         </div>
     </section>
 </main>

@@ -28,7 +28,6 @@ async function realizarBusqueda() {
         .select('id, nombre_busqueda, nombre_pareja, pases, mesa')
         .or(`nombre_busqueda.ilike.%${termino}%,nombre_pareja.ilike.%${termino}%`)
         .limit(8)
-
     if (error) {
         console.error('Error Supabase:', error)
         if (status) {
@@ -37,7 +36,6 @@ async function realizarBusqueda() {
         }
         return
     }
-
     if (!data || data.length === 0) {
         if (status) {
             status.textContent = 'No encontramos ese nombre. Verifica cómo lo escribiste.'
@@ -45,13 +43,6 @@ async function realizarBusqueda() {
         }
         return
     }
-
-    if (data.length === 1) {
-        // Redirección directa agregando el id a la URL
-        window.location.href = `invitacion.html?id=${data[0].id}`
-        return
-    }
-
     if (status) {
         status.textContent = 'Encontramos varias coincidencias, toca la tuya:'
         status.style.color = '#ffffff'

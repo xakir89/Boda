@@ -120,7 +120,7 @@ function pintarTarjeta(inv) {
         if (mensajeConfirmado) {
             mensajeConfirmado.classList.remove('hidden')
             mensajeConfirmado.textContent = inv.confirmado === 'asistira'
-                ? '✅ ¡Gracias por confirmar!'
+                ? '¡Gracias por confirmar!'
                 : 'Gracias por confirmar.'
         }
 
@@ -144,6 +144,10 @@ if (pasesSelect) {
 async function confirmarAsistencia(asiste) {
     if (!invitadoActual || !invitadoActual.id) return
 
+    // Bloquear botones inmediatamente al hacer clic para evitar doble envío
+    if (btnSi) btnSi.disabled = true
+    if (btnNo) btnNo.disabled = true
+
     const pasesElegidos = asiste 
         ? (pasesSelect ? parseInt(pasesSelect.value, 10) : (invitadoActual.pases || 1)) 
         : 0
@@ -160,10 +164,12 @@ async function confirmarAsistencia(asiste) {
 
     if (error) {
         alert('Ocurrió un error al guardar tu respuesta. Intenta de nuevo.')
+        if (btnSi) btnSi.disabled = false
+        if (btnNo) btnNo.disabled = false
         return
     }
 
-    // Ocultar formulario
+    // 2. Ocultar formulario de botones y pases
     if (rsvpBotones) rsvpBotones.classList.add('hidden')
     if (selectorPasesContainer) selectorPasesContainer.classList.add('hidden')
 
@@ -172,7 +178,7 @@ async function confirmarAsistencia(asiste) {
         if (detallesEvento) detallesEvento.classList.remove('hidden')
         if (mensajeConfirmado) {
             mensajeConfirmado.classList.remove('hidden')
-            mensajeConfirmado.textContent = '✅ ¡Gracias por confirmar!'
+            mensajeConfirmado.textContent = '¡Gracias por confirmar!'
         }
 
         if (accionesPost) accionesPost.classList.remove('hidden')
