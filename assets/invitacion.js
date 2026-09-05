@@ -47,7 +47,7 @@ const mensajeConfirmado = document.getElementById('mensajeConfirmado')
 const accionesPost = document.getElementById('accionesPostConfirmacion')
 const btnDescargarPng = document.getElementById('btnDescargarPng')
 const btnContinuar = document.getElementById('btnContinuar')
-
+const detallesEvento = document.getElementById('detallesEvento')
 // Parámetros URL
 const params = new URLSearchParams(window.location.search)
 const invitadoId = params.get('id')
@@ -126,6 +126,7 @@ function pintarTarjeta(inv) {
 
         if (inv.confirmado === 'asistira' && accionesPost) {
             accionesPost.classList.remove('hidden')
+            if (detallesEvento) detallesEvento.classList.remove('hidden')
         }
     } else {
         if (selectorPasesContainer) selectorPasesContainer.classList.remove('hidden')
@@ -168,7 +169,7 @@ async function confirmarAsistencia(asiste) {
 
     if (asiste) {
         if (numPases) numPases.textContent = pasesElegidos
-
+        if (detallesEvento) detallesEvento.classList.remove('hidden')
         if (mensajeConfirmado) {
             mensajeConfirmado.classList.remove('hidden')
             mensajeConfirmado.textContent = '✅ ¡Gracias por confirmar!'

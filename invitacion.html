@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#748b73">
@@ -31,13 +32,14 @@
                 <p class="eyebrow">AY, NO</p>
                 <h1 class="names" style="font-size: clamp(2.2rem,7vw,3.5rem);">No pudimos encontrarte</h1>
                 <p style="color:white; margin-top: 10px;">Vuelve a intentar la búsqueda con tu nombre.</p>
-                <button class="main-button" onclick="irA('buscar.html')">← Buscar de nuevo</button>
+                <button class="main-button" onclick="irA('buscar.html')">Buscar de nuevo</button>
             </div>
 
             <!-- Tarjeta de invitación -->
             <div id="tarjetaInvitacion" class="invite-card hidden">
-                <div class="invite-card-decoration">✿</div>
-
+                <div class="invite-card-decoration">
+                    <img src="assets/6.png" class="flor-responsiva" alt="Flor">
+                </div>
                 <p class="eyebrow">INVITACIÓN PARA</p>
                 <div id="selectorPasesContainer" style="margin: 15px 0;">
                     <label for="pasesSelect" style="color: var(--green-dark); font-weight: bold; display: block; margin-bottom: 5px;">
@@ -56,9 +58,24 @@
                     <p>Invitación para <strong id="numPases">—</strong> persona(s)</p>
                     <p>Mesa <strong id="numMesa">—</strong></p>
                 </div>
-
-                <p class="invite-fecha">7 de diciembre de 2026 · Tuluá, Valle del Cauca</p>
-
+                <p class="invite-fecha">7 de diciembre de 2026<br>Tuluá, Valle del Cauca</p>
+                <div id="detallesEvento" class="invite-detalles-evento hidden">
+                    <div class="evento-bloque">
+                        <h3 class="evento-titulo">CEREMONIA</h3>
+                        <p><strong>Hora:</strong> 5:00 PM</p>
+                        <p><strong>Lugar:</strong> Parroquia La Sagrada Familia</p>
+                        <p><strong>Dirección:</strong> Calle Principal # 12 - 34</p>
+                        <p><strong>Barrio:</strong> Nuevo Alvernia</p>
+                        <p><strong>Tuluá Valle del Cacua</strong></p>
+                    </div>
+                    <div class="gold-line" style="margin: 15px auto; width: 40px;"></div>
+                    <div class="evento-bloque">
+                        <h3 class="evento-titulo">RECEPCIÓN</h3>
+                        <p><strong>Hora:</strong> 7:00 PM</p>
+                        <p><strong>Lugar:</strong> Finca Villa Alana</p>
+                        <p><strong>Farfán, Palomestizo<br>Tuluá, Valle del Cauca</p>
+                    </div>
+                </div>
                 <!-- Botones RSVP -->
                 <div id="rsvpBotones" class="rsvp-inline-buttons">
                     <button id="btnSi" class="main-button">Sí asistiré 🎉</button>
@@ -72,7 +89,7 @@
             <!-- Acciones después de confirmar "sí" -->
             <div id="accionesPostConfirmacion" class="hidden" style="margin-top: 20px;">
                 <button id="btnDescargarPng" class="main-button">📥 Descargar mi invitación</button>
-                <button id="btnContinuar" class="scroll-button" style="margin-top:14px;">Continuar a la invitación completa →</button>
+                <button id="btnContinuar" class="scroll-button" style="margin-top:14px;">Volver</button>
             </div>
 
         </div>

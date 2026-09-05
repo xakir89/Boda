@@ -1190,7 +1190,8 @@ footer h2 {
    TARJETA DE INVITACIÓN PERSONALIZADA (invitacion.html)
 ===================================================== */
 .invite-card {
-    background: white;
+    background: linear-gradient(rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.15)), 
+                url('fondo.jpg') center/cover no-repeat;
     color: var(--text);
     border-radius: 26px;
     padding: 50px 30px;
@@ -1198,7 +1199,8 @@ footer h2 {
     position: relative;
     overflow: hidden;
     text-align: center;
-    isolation: isolate; /* asegura que la decoración quede anclada a esta tarjeta */
+    isolation: isolate;
+    border: 1px solid rgba(184, 154, 93, 0.3);
 }
 .invite-card-decoration {
     position: absolute;
@@ -1389,7 +1391,7 @@ footer h2 {
 /* Contenedor principal con fondo personalizado */
 .tarjeta-invitacion {
     background: linear-gradient(rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.88)), 
-                url('assets/fondo.jpg') center/cover no-repeat;
+                url('fondo.jpg') center/cover no-repeat;
     border-radius: 24px;
     padding: 35px 25px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
@@ -1420,4 +1422,42 @@ footer h2 {
     color: #4a4a4a;
     margin: 12px 0;
     font-weight: 500;
+}
+/* =====================================================
+   ESTILOS FLOR Y DETALLES DE EVENTO
+===================================================== */
+.invite-card-decoration {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.flor-responsiva {
+    width: clamp(90px, 20vw, 160px); 
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+.invite-detalles-evento {
+    margin: 25px 0 15px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.65);
+    border-radius: 16px;
+    border: 1px dashed var(--gold);
+}
+
+.evento-titulo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    color: var(--green-dark);
+    margin-bottom: 6px;
+}
+
+.evento-bloque p {
+    font-size: 0.95rem;
+    margin: 3px 0;
+    color: var(--text);
 }
