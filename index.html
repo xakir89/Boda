@@ -31,26 +31,6 @@
         display: block;
         background: var(--cream);
     }
-    /* Flores globales fijas a los costados, por encima del iframe */
-    .frame-decor {
-        position: fixed;
-        top: 0;
-        height: 100%;
-        width: clamp(50px, 10vw, 150px);
-        z-index: 500;
-        pointer-events: none;
-        object-fit: cover;
-        opacity: 0.9;
-        filter: drop-shadow(0 0 18px rgba(0,0,0,0.15));
-    }
-    .frame-decor.left  { left: 0; }
-    .frame-decor.right { right: 0; }
-
-    /* En pantallas angostas, las flores estorban demasiado: las hacemos más
-       delgadas y más transparentes en vez de quitarlas del todo */
-    @media (max-width: 700px) {
-        .frame-decor { width: clamp(34px, 7vw, 70px); opacity: 0.75; }
-    }
 
     /* Botón de música del maestro (vive fuera del iframe para no reiniciarse nunca) */
     .music-button {
@@ -78,10 +58,6 @@
 
 <div id="frameLoader" class="frame-loader">Anderson & Esmeralda</div>
 
-<!-- Flores globales: reemplaza estos archivos por tus imágenes 2.png (izquierda) y 3.png (derecha) -->
-<img src="assets/2.png" alt="" class="frame-decor left">
-<img src="assets/3.png" alt="" class="frame-decor right">
-
 <!-- Música global: nunca se reinicia porque vive en el maestro, no en el iframe -->
 <audio id="weddingMusic" loop preload="auto">
     <source src="assets/1.mp3" type="audio/mpeg">
@@ -95,7 +71,7 @@
 
 <script>
 /* =====================================================
-   "TELEVISOR": cambia de canal sin apagar música ni flores
+   "TELEVISOR": cambia de canal sin apagar música
 ===================================================== */
 const channel = document.getElementById("channel");
 const loader = document.getElementById("frameLoader");
@@ -126,7 +102,6 @@ channel.addEventListener("load", () => {
 });
 
 // Escucha mensajes de las páginas hijas (nav.js) para cambiar de canal
-// o reaccionar a eventos (ej: iniciar música cuando el sobre se abre)
 window.addEventListener("message", (event) => {
     const msg = event.data;
     if (!msg || typeof msg !== "object") return;
@@ -137,8 +112,6 @@ window.addEventListener("message", (event) => {
 
     if (msg.tipo === "boda:evento") {
         if (msg.evento === "iniciarMusica") iniciarMusica();
-        if (msg.evento === "ocultarFlores") document.querySelectorAll(".frame-decor").forEach(d => d.style.opacity = "0");
-        if (msg.evento === "mostrarFlores") document.querySelectorAll(".frame-decor").forEach(d => d.style.opacity = "");
     }
 });
 </script>

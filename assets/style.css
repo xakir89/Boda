@@ -1546,3 +1546,87 @@ footer h2 {
     bottom: -15px;
     right: -15px;
 }
+/* 1. Asegurar que todas las secciones y contenedores tengan posición relativa */
+.hero, section, .seccion-foto-intermedia {
+    position: relative;
+    overflow: hidden; /* Evita que las imágenes sobresalgan del margen */
+}
+
+/* 2. Estilo base de decoraciones */
+.decoracion-esquina {
+    position: absolute;
+    z-index: 10;
+    pointer-events: none;
+    width: clamp(80px, 18vw, 180px); /* Tamaño adaptativo para escritorio */
+    height: auto;
+}
+
+/* 3. Las 4 esquinas para intercalar */
+.decoracion-esquina.top-left {
+    top: -10px;
+    left: -10px;
+}
+
+.decoracion-esquina.top-right {
+    top: -10px;
+    right: -10px;
+    transform: scaleX(-1); /* Invierte la rama horizontalmente */
+}
+
+.decoracion-esquina.bottom-left {
+    bottom: -10px;
+    left: -10px;
+    transform: scaleY(-1); /* Invierte la rama verticalmente */
+}
+
+.decoracion-esquina.bottom-right {
+    bottom: -10px;
+    right: -10px;
+}
+
+/* 4. Ajuste responsivo para celulares (pantallas pequeñas) */
+@media (max-width: 600px) {
+    .decoracion-esquina {
+        width: clamp(50px, 14vw, 90px); /* Tamaño reducido en móviles para no saturar ni duplicar visualmente */
+        opacity: 0.85;
+    }
+}
+/* 1. La sección ocupa todo el ancho de la pantalla */
+.section, .story {
+    width: 100%;
+    max-width: 100% !important; 
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* 2. Fijar las ramas a los bordes exteriores reales */
+.decoracion-esquina {
+    position: absolute;
+    z-index: 1;
+    pointer-events: none;
+    width: 220px; /* Ancho de la rama en escritorio */
+    height: auto;
+}
+
+.decoracion-esquina.top-left {
+    top: 0;
+    left: 0;
+}
+
+.decoracion-esquina.bottom-right {
+    bottom: 0;
+    right: 0;
+}
+
+/* 3. Limitar y centrar únicamente el contenido interno (texto y foto) */
+.story-text,
+.story h2,
+.story .eyebrow,
+.story .gold-line,
+.story .story-photo,
+.story .section-decoration {
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+}
