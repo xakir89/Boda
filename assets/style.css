@@ -1778,7 +1778,7 @@ footer h2 {
 
 .invite-mesa {
     font-family: 'Alex Brush', cursive;
-    font-size: 2.4rem;
+    font-size: 2.0rem;
     margin: 8px 0;
     line-height: 1;
     display: flex;
@@ -1790,7 +1790,7 @@ footer h2 {
 /* Color individual para la palabra "Mesa" (Verde) */
 .invite-mesa-texto {
     font-family: 'Alex Brush', cursive;
-    font-size: 2.4rem;
+    font-size: 2.0rem;
     font-weight: 700;
     color: #435745;
 }
@@ -1798,7 +1798,7 @@ footer h2 {
 /* Color para el número (Dorado) */
 #numMesa {
     font-family: 'Alex Brush', cursive;
-    font-size: 2.4rem;
+    font-size: 2.0rem;
     font-weight: 700;
     color: var(#435745);
 }
