@@ -89,7 +89,27 @@ function pintarTarjeta(inv) {
     if (estadoCargando) estadoCargando.classList.add('hidden')
     if (tarjeta) tarjeta.classList.remove('hidden')
 
-    if (nombrePareja) nombrePareja.textContent = inv.nombre_pareja
+    // Formatear nombres separados por '&' o 'y' en 3 líneas elegantes
+    if (nombrePareja) {
+        const rawNombre = inv.nombre_pareja || ''
+        let partes = []
+
+        if (rawNombre.includes('&')) {
+            partes = rawNombre.split('&').map(s => s.trim())
+        } else if (/\sy\s/i.test(rawNombre)) {
+            partes = rawNombre.split(/\sy\s/i).map(s => s.trim())
+        }
+
+        if (partes.length === 2) {
+            nombrePareja.innerHTML = `
+                <span class="invite-nombre-bloque">${partes[0]}</span>
+                <span class="invite-ampersand">&</span>
+                <span class="invite-nombre-bloque">${partes[1]}</span>
+            `
+        } else {
+            nombrePareja.textContent = rawNombre
+        }
+    }
     if (numMesa) numMesa.textContent = inv.mesa ?? '—'
 
     // Determina los pases a mostrar según el estado
