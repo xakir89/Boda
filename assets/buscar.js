@@ -1,14 +1,3 @@
-import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm'
-
-const supabaseUrl = 'https://wcsiymdddkvmkypuxzjp.supabase.co'
-const supabaseKey = 'sb_publishable_aglQGTkxk497-Hv49IFbCQ_r8N3Ixoy'
-const supabase = createClient(supabaseUrl, supabaseKey)
-
-const form = document.getElementById('searchForm')
-const input = document.getElementById('searchInput')
-const status = document.getElementById('searchStatus')
-const resultsList = document.getElementById('resultsList')
-
 async function realizarBusqueda() {
     const termino = input.value.trim().toLowerCase()
     if (termino.length < 2) {
@@ -21,13 +10,19 @@ async function realizarBusqueda() {
         status.textContent = 'Buscando... 🔎'
         status.style.color = 'var(--gold-light, #d4af37)'
     }
-    if (resultsList) resultsList.innerHTML = ''
 
     const { data, error } = await supabase
         .from('invitados')
         .select('id, nombre_busqueda, nombre_pareja, pases, mesa')
         .or(`nombre_busqueda.ilike.%${termino}%,nombre_pareja.ilike.%${termino}%`)
-        .limit(8)
+        .limit(10)
+
+    // Validar si el texto cambió mientras Supabase respondía para evitar duplicaciones asíncronas
+    if (input.value.trim().toLowerCase() !== termino) return
+
+    // Limpiar el contenedor justo antes de pintar los resultados nuevos
+    if (resultsList) resultsList.innerHTML = ''
+
     if (error) {
         console.error('Error Supabase:', error)
         if (status) {
@@ -36,6 +31,7 @@ async function realizarBusqueda() {
         }
         return
     }
+
     if (!data || data.length === 0) {
         if (status) {
             status.textContent = 'No encontramos ese nombre. Verifica cómo lo escribiste.'
@@ -43,12 +39,18 @@ async function realizarBusqueda() {
         }
         return
     }
+
+    // ELIMINAR DUPLICADOS: Filtrar registros por nombre_pareja o id único
+    const resultadosUnicos = Array.from(
+        new Map(data.map(inv => [inv.nombre_pareja || inv.id, inv])).values()
+    )
+
     if (status) {
         status.textContent = 'Encontramos varias coincidencias, toca la tuya:'
         status.style.color = '#ffffff'
     }
 
-    data.forEach(inv => {
+    resultadosUnicos.forEach(inv => {
         const card = document.createElement('button')
         card.type = 'button'
         card.className = 'result-item'
@@ -58,20 +60,5 @@ async function realizarBusqueda() {
             window.location.href = `invitacion.html?id=${inv.id}`
         })
         if (resultsList) resultsList.appendChild(card)
-    })
-}
-
-if (form) {
-    form.addEventListener('submit', (e) => {
-        e.preventDefault()
-        realizarBusqueda()
-    })
-}
-
-let timer
-if (input) {
-    input.addEventListener('input', () => {
-        clearTimeout(timer)
-        timer = setTimeout(realizarBusqueda, 300)
     })
 }

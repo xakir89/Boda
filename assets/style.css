@@ -1751,7 +1751,6 @@ footer h2 {
     margin: 4px 0;
     line-height: 1;
 }
-
 /* =====================================================
    ESTILO DESTACADO PARA EL NÚMERO DE MESA Y PASES
 ===================================================== */
@@ -1773,21 +1772,33 @@ footer h2 {
 #numPases {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.4rem;
-    color: var(--green-dark, #435745);
+    color: var(--gold, #b89a5d);
     font-weight: 700;
 }
 
-/* Insignia dorada destacada para el número de mesa */
-#numMesa {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.8rem;
+.invite-mesa {
+    font-family: 'Alex Brush', cursive;
+    font-size: 2.4rem;
+    margin: 8px 0;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Color individual para la palabra "Mesa" (Verde) */
+.invite-mesa-texto {
+    font-family: 'Alex Brush', cursive;
+    font-size: 2.4rem;
     font-weight: 700;
-    color: var(--gold, #b89a5d);
-    background: rgba(184, 154, 93, 0.12);
-    border: 1px solid rgba(184, 154, 93, 0.35);
-    padding: 2px 14px;
-    border-radius: 20px;
-    display: inline-block;
-    margin-left: 6px;
-    box-shadow: 0 3px 10px rgba(184, 154, 93, 0.15);
+    color: #435745;
+}
+
+/* Color para el número (Dorado) */
+#numMesa {
+    font-family: 'Alex Brush', cursive;
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(#435745);
 }
