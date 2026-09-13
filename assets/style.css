@@ -1802,3 +1802,16 @@ footer h2 {
     font-weight: 700;
     color: var(#435745);
 }
+/* Estilo Cursiva / Romántico para NOS CASAMOS */
+.nos-casamos, 
+.hero h2, 
+.hero-subtitle {
+    font-family: 'Alex Brush', cursive;
+    font-size: 3.2rem;          /* Tamaño más grande y llamativo */
+    color: var(--white, #ffffff); /* O el color de tu preferencia */
+    font-weight: 400;
+    text-transform: none;       /* En cursiva luce mejor en minúsculas/mayúsculas mixtas */
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Sombra suave para darle relieve */
+}
