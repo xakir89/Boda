@@ -89,7 +89,8 @@ p {
     position: relative;
 }
 .eyebrow {
-    font-size: 0.75rem;
+    font-family: 'Marcellus', serif;
+    font-size: 1.25rem;
     letter-spacing: 4px;
     text-transform: uppercase;
     color: var(--gold);
@@ -1269,6 +1270,7 @@ footer h2 {
     color: var(--gold);
     text-transform: uppercase;
 }
+
 .rsvp-inline-buttons {
     display: flex;
     flex-wrap: wrap;
@@ -1813,4 +1815,13 @@ footer h2 {
     letter-spacing: 1px;
     margin-bottom: 10px;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Sombra suave para darle relieve */
+}
+.lluvia-sobres{
+    font-family: 'Cormorant Garamond', serif;
+    margin-top: 18px;
+    font-size: 1.35rem;
+    letter-spacing: 1.3px;
+    color: var(--gold, #b89a5d);
+    text-transform: uppercase;
+    text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.4);
 }

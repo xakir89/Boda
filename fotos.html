@@ -10,6 +10,13 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
+<style>
+    /* Elimina el recuadro/marco blanco alrededor de la cabecera */
+    .hero-fotos::before {
+        display: none !important;
+    }
+</style>
 </head>
 <body>
 
@@ -17,10 +24,11 @@
     <section class="hero hero-fotos" style="min-height: 40svh;">
         <div class="hero-overlay"></div>
         <div class="hero-content reveal">
-            <p class="eyebrow">NUESTROS RECUERDOS</p>
+            <p class="eyebrow">Nuestros Recuerdos</p>
+            <br>
             <h1 class="names">Galería</h1>
+            <br>
             <div class="hero-line"></div>
-            <button class="scroll-button" onclick="irA('contenido.html')">← Volver </button>
         </div>
     </section>
 
@@ -59,6 +67,11 @@
 
         <div id="galleryContainer" class="gallery-grid">
             <div class="loading" style="grid-column: 1 / -1; text-align: center; margin-top: 20px;">Cargando recuerdos...</div>
+        </div>
+
+        <!-- BOTÓN VOLVER AL FINAL DE LA PÁGINA -->
+        <div style="text-align: center; margin-top: 50px;">
+            <button class="main-button main-button--outline" onclick="irA('contenido.html')">Volver al inicio</button>
         </div>
     </section>
 </main>
