@@ -223,7 +223,7 @@ p {
             rgba(50, 68, 51, 0.38),
             rgba(50, 68, 51, 0.58)
         ),
-        url("fondo-boda.jpg")
+        url("cuenta.webp")
         center / cover no-repeat;
 }
 .hero::before {
@@ -1137,7 +1137,7 @@ footer h2 {
 .hero-fotos {
     background:
         linear-gradient(rgba(50, 68, 51, 0.55), rgba(50, 68, 51, 0.72)),
-        url("fondo-boda.jpg") center / cover no-repeat;
+        url("cuenta.webp") center / cover no-repeat;
 }
 .search-form {
     display: flex;
@@ -1198,7 +1198,7 @@ footer h2 {
 }
 .invite-card {
     background: linear-gradient(rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.15)), 
-                url('fondo.jpg') center/cover no-repeat;
+        url('fondo.webp') center/cover no-repeat;
     color: var(--text);
     border-radius: 26px;
     padding: 50px 30px;
@@ -1474,7 +1474,7 @@ footer h2 {
 /* Contenedor principal con fondo personalizado */
 .tarjeta-invitacion {
     background: linear-gradient(rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.88)), 
-                url('fondo.jpg') center/cover no-repeat;
+                url('fondo.webp') center/cover no-repeat;
     border-radius: 24px;
     padding: 35px 25px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
