@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
     crearPetalos();
 });
 
-function crearPetalos(contenedor = document.body, cantidad = 8, simbolos = ['assets/4.png', 'assets/5.png', 'assets/6.png']) {
+function crearPetalos(contenedor = document.body, cantidad = 8, simbolos = ['assets/4.webp', 'assets/5.webp', 'assets/6.webp']) {
     const target = contenedor || document.body;
     if (!target) return;
 

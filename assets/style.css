@@ -1,28 +1,21 @@
 /* =====================================================
    VARIABLES
 ===================================================== */
-
 :root {
     --green-dark: #435745;
     --green: #748b73;
     --green-light: #aebdaa;
     --green-soft: #dfe7dc;
-
     --cream: #f8f6ef;
     --cream-dark: #eee9dc;
-
     --gold: #b89a5d;
     --gold-light: #d7c08b;
-
     --white: #ffffff;
     --text: #435044;
-
     --shadow:
         0 15px 40px rgba(54, 72, 55, 0.12);
-
     --radius: 22px;
 }
-
 /* =====================================================
    RESET
 ===================================================== */
@@ -1824,4 +1817,12 @@ footer h2 {
     color: var(--gold, #b89a5d);
     text-transform: uppercase;
     text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.4);
+}
+/* Clase exclusiva para ajustar el tamaño de la flecha */
+.flecha-responsiva {
+    width: clamp(30px, 8vw, 55px); /* Ajusta a tu gusto: mínimo 30px, máximo 55px */
+    height: auto;
+    display: block;
+    margin: 15px auto 0;
+    object-fit: contain;
 }
